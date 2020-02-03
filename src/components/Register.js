@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
 
 const initialVal = {
   username: "",
@@ -32,7 +33,7 @@ export default function Register(props) {
       });
   }
   return (
-    <div>
+    <StyledReg>
       <Formik
         initialValues={initialVal}
         onSubmit={submitHandler}
@@ -40,39 +41,46 @@ export default function Register(props) {
       >
         <Form>
           {/* Name */}
-          <label htmlFor="current_username">username</label>
-          <Field
-            type="text"
-            id="current_username"
-            name="username"
-            placeholder="Enter username here"
-          />
-          <ErrorMessage name="username" component="div" className="error" />
-
-          {/* //Password */}
-          <label htmlFor="current_password">Password</label>
-          <Field
-            type="password"
-            id="current_password"
-            name="password"
-            placeholder="Enter your password here"
-          />
-          <ErrorMessage name="password" component="div" className="error" />
-
-          <label htmlFor="prison_id">Prison id</label>
-          <Field
-            type="text"
-            id="prison_id"
-            name="prison_id"
-            placeholder="Enter facility ID here"
-          />
-          <ErrorMessage name="prison_id" component="div" className="error" />
+          <div className="username">
+            <label htmlFor="current_username">username</label>
+            <Field
+              type="text"
+              id="current_username"
+              name="username"
+              placeholder="Enter username here"
+            />
+            <ErrorMessage name="username" component="div" className="error" />
+          </div>
+          <div className="password">
+            {/* //Password */}
+            <label htmlFor="current_password">Password</label>
+            <Field
+              type="password"
+              id="current_password"
+              name="password"
+              placeholder="Enter your password here"
+            />
+            <ErrorMessage name="password" component="div" className="error" />
+          </div>
+          <div className="prison-id">
+            <label htmlFor="prison_id">Prison id</label>
+            <Field
+              type="text"
+              id="prison_id"
+              name="prison_id"
+              placeholder="Enter facility ID here"
+            />
+            <ErrorMessage name="prison_id" component="div" className="error" />
+          </div>
 
           {/* //submit button */}
           <button type="submit">Submit</button>
         </Form>
       </Formik>
-    </div>
+      <div>
+        <Link to="/login">Already Registered?</Link>
+      </div>
+    </StyledReg>
   );
 }
 
@@ -87,3 +95,12 @@ const validationSchema = Yup.object().shape({
     .max(25, "Too Long!")
     .matches(/(?=.*[0-9])/, "Must contain at least one number")
 });
+
+const StyledReg = styled.div`
+  border: 1px blue solid;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  margin: 20px;
+`;

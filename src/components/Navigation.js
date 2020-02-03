@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Navigation = () => {
   return (
-    <styledNav className="navBar">
+    <StyledNav className="navBar">
       <div>
         <Link to="/">Home </Link>
       </div>
@@ -18,12 +18,14 @@ const Navigation = () => {
       <div>
         <Link to="/register">Register your facility </Link>
       </div>
-    </styledNav>
+    </StyledNav>
   );
 };
 
 export default Navigation;
 
-const styledNav = styled.div`
+const StyledNav = styled.div`
   border: 1px solid red;
+  display:flex;
+  justify-content:space-between;
 `;
