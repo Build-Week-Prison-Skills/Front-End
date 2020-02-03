@@ -10,17 +10,19 @@ const Navigation = () => {
         <Link to="/">Home </Link>
       </div>
       <div>
-        <Link to="/InmateList">Inmates</Link>
+        <Link to="/inmateList">Inmates</Link>
       </div>
       <div>
-        <Link to="/FacilityList">Facilities </Link>
+        <Link to="/facilityList">Facilities </Link>
+      </div>
+      <div>
+        <Link to="/register">Register your facility </Link>
       </div>
     </styledNav>
   );
 };
 
 export default Navigation;
-
 
 const styledNav = styled.div`
   border: 1px solid red;
