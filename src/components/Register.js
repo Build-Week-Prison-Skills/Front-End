@@ -98,10 +98,24 @@ const validationSchema = Yup.object().shape({
 });
 
 const StyledReg = styled.div`
-  border: 1px blue solid;
-  height: 200px;
+  width: 300px;
   display: flex;
   flex-direction: column;
-  align-content: flex-end;
-  margin: 20px;
+  align-items: center;
+  justify-content:space-between;
+
+  height: 300px;
+  margin: 20px auto;
+  padding-bottom:20px;
+  border: blueviolet 2px solid;
+border-radius: 4px;
+box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  form{
+      height:60%;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-between;
+
+  }
 `;
