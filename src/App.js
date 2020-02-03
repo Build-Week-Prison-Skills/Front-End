@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import InmateList from "./components/InmateList";
 import FacilityList from "./components/FacilityList";
 import Register from "./components/Register";
-import Login from "./components/Login";
+import LogInForm from "./components/Login";
 import { Route, Switch } from "react-router-dom";
 // import styled from "styled-components";
 
@@ -27,7 +27,7 @@ const App = () => (
           <Register />
         </Route>
         <Route exact path="/login">
-          <Login />
+          <LogInForm/>
         </Route>
       </Switch>
     </header>

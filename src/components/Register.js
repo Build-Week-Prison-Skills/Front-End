@@ -34,6 +34,7 @@ export default function Register(props) {
   }
   return (
     <StyledReg>
+         <h1>Register</h1>
       <Formik
         initialValues={initialVal}
         onSubmit={submitHandler}
@@ -78,7 +79,7 @@ export default function Register(props) {
         </Form>
       </Formik>
       <div>
-        <Link to="/login">Already Registered?</Link>
+        <Link to="/login">Already Registered?  Go to login page</Link>
       </div>
     </StyledReg>
   );
