@@ -13,7 +13,7 @@ export default function LogInForm(props) {
         console.log(response);
        
         localStorage.setItem("token", response.data.token);
-        actions.props.history.push("/");
+        // actions.props.history.push("/");
         console.log(response.data.token);
         actions.resetForm();
       })
