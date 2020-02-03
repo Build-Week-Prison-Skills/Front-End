@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { navbar } from "materialize-css";
+// import { navbar } from "materialize-css";
 import styled from "styled-components";
 
 const Navigation = () => {
@@ -16,7 +16,10 @@ const Navigation = () => {
         <Link to="/facilityList">Facilities </Link>
       </div>
       <div>
-        <Link to="/register">Register your facility </Link>
+        <Link to="/register">Register </Link>
+      </div>
+      <div>
+        <Link to="/login">Login </Link>
       </div>
     </StyledNav>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Inmate = ({ inmate }) => {
-  const { id, Name, Prison_id, day_release, skills } = inmate;
+  const { Name, Prison_id, day_release, skills } = inmate;
   return (
     <StyledDiv>
       {/* <img src={props.image} alt={props.name} /> */}

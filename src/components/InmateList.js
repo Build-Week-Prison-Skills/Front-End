@@ -11,8 +11,8 @@ export default function InmateList(props) {
       axios
         .get("https://prisonerbw.herokuapp.com/api/prisoners")
         .then(response => {
-          console.log(response.data);
-          setInmates(response.data);
+            console.log(response.data);
+                   setInmates(response.data);
           console.log(inmates);
         })
         .catch(error => {
@@ -20,7 +20,7 @@ export default function InmateList(props) {
         });
     };
     getInmates();
-  }, []);
+  },[]);
   return (
     <div className="inmate-list">
       {inmates.map((inmate, index) => (

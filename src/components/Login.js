@@ -40,7 +40,7 @@ export default function LogInForm(props) {
               name="username"
               placeholder="Enter your username here"
             />
-            <ErrorMessage name="email" component="div" className="error" />
+            <ErrorMessage name="username" component="div" className="error" />
           </div>
           <div>
             {/* Password */}
