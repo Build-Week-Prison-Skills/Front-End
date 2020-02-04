@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { withAuth } from "./WithAuth";
 
@@ -36,7 +36,8 @@ export default function InmateForm(props) {
   };
 
   function handleSubmitPrisoner(values, e) {
-    e.preventDefault();
+    // e.preventDefault();
+    console.log(inmateFormValues)
     withAuth()
       .post("https://prisonerbw.herokuapp.com/api/auth/prisoners", values)
       .then(event => {

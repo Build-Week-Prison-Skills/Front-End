@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from "styled-components";
-{/* <div>
-<Link to="/facility${id}">Facility</Link>
-</div> */}
+import { Link } from "react-router-dom";
+
 
 
 const Facility= (props) => {
     
     return (
+      // <Link to={`/facilityList/facility/${id}`}>  </Link> 
       <StyledFacility>
-             <h3>Facility: {props.Prison_Name}</h3>
+             <h1>{props.Prison_Name}</h1>
              <h3>id: {props.id}</h3>
              <h3>Location: {props.Location}</h3>
              <h3>Available prisoners = {props.available_prisoners}</h3>
-
       </StyledFacility>
+   
     );
   };
   

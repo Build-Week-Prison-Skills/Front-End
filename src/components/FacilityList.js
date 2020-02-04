@@ -11,9 +11,7 @@ export default function FacilityList(props) {
       axios
         .get("https://prisonerbw.herokuapp.com/api/prisons")
         .then(response => {
-          console.log(response.data);
           setFacilities(response.data);
-          console.log(response.data[1]);
         })
         .catch(error => {
           console.log("the data was not returned", error);

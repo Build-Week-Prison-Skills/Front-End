@@ -40,6 +40,11 @@ const App = () => {
             <Route exact path="/login">
               <LogInForm />
             </Route>
+            {/* <Route
+          exact
+          path="/facilityList/facility/:id"
+          render={props => <PrisonProfilePage {...props} />}
+        /> */}
           </Switch>
         </Content>
       </Layout>
