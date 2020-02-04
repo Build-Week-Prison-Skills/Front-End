@@ -9,7 +9,7 @@ export default function InmateForm(props) {
     Name: "",
     Prison_id: "",
     day_release: "",
-    skills: []
+    skills: ""
   });
   console.log(inmateFormValues);
 
@@ -17,7 +17,7 @@ export default function InmateForm(props) {
     Name: "",
     Prison_id: "",
     day_release:false,
-    skills: [],
+    skills: "",
   };
 
   const handleChange = event => {
@@ -35,19 +35,6 @@ export default function InmateForm(props) {
         }
   };
 
-  // const handleChange = event => {
-  //   if (event.target.name === "skills") {
-  //     setInmateFormValues({
-  //       ...inmateFormValues,
-  //       [event.target.name]: [...inmateFormValues.skills, event.target.value]
-  //     });
-  //   } else {
-  //     setInmateFormValues({
-  //       ...inmateFormValues,
-  //       [event.target.name]: event.target.value
-  //     });
-  //   }
-  // };
   function handleSubmitPrisoner(values, e) {
     e.preventDefault();
     withAuth()
@@ -63,14 +50,7 @@ export default function InmateForm(props) {
         console.log("Axios request finished.");
       });
   }
-  // GetToken()
-  //   .post("https://prisonerbw.herokuapp.com/api/prisoners")
-  //   .then(response => {
-  //     console.log(response.data);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
+
 
   return (
     <StyledAddInmate>
@@ -87,19 +67,19 @@ export default function InmateForm(props) {
               type="text"
               id="name"
               name="Name"
-              placeholder="Enter your username here"
+              placeholder="Enter inmates name here"
               onChange={e => handleChange(e)}
             />
             <ErrorMessage name="Name" component="div" className="error" />
           </div>
           {/*Prison_id*/}
           <div>
-            <label htmlFor="PrisonId">Prison id</label>
+            <label htmlFor="PrisonId">I.D.    </label>
             <Field
               type="text"
               id="PrisonId"
               name="Prison_id"
-              placeholder="Prison id"
+              placeholder="Prison/Facility id"
               onChange={e => handleChange(e)}
             />
             <ErrorMessage name="Name" component="div" className="error" />
@@ -107,7 +87,7 @@ export default function InmateForm(props) {
 
           {/* skills */}
           <div>
-            <label htmlFor="current-skills">skills</label>
+            <label htmlFor="current-skills">Skills</label>
             <Field
               type="text"
               id="current-skills"
@@ -161,3 +141,37 @@ const StyledAddInmate = styled.div`
     justify-content: space-between;
   }
 `;
+//Attempt2(combined)
+// const handleChange = event => {
+//   console.log(event.target)
+//   if (event.target.type === "checkbox") {
+//         setInmateFormValues({
+//           ...inmateFormValues,
+//           [event.target.name]: event.target.checked
+//         });
+//       } else if (event.target.name === "skills") {
+//             setInmateFormValues({
+//               ...inmateFormValues,
+//               [event.target.name]: [...inmateFormValues.skills, event.target.value]
+//             });
+//           } else {
+//         setInmateFormValues({
+//           ...inmateFormValues,
+//           [event.target.name]: event.target.value
+//         });
+//       }
+// };
+//attempt1
+  // const handleChange = event => {
+  //  else if (event.target.name === "skills") {
+  //     setInmateFormValues({
+  //       ...inmateFormValues,
+  //       [event.target.name]: [...inmateFormValues.skills, event.target.value]
+  //     });
+  //   } else {
+  //     setInmateFormValues({
+  //       ...inmateFormValues,
+  //       [event.target.name]: event.target.value
+  //     });
+  //   }
+  // };
