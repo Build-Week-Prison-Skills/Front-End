@@ -4,14 +4,7 @@ import axios from "axios";
 import Facility from "./Facility";
 
 export default function FacilityList(props) {
-  const [facilities, setFacilities] = useState([
-      {prison_name:"Shawshank"},
-      {prison_name:"Litchfield"},
-      {prison_name:"Alcatraz"},
-      {prison_name:"Azkaban"},
-      {prison_name:"Dartmoor"}
-
-  ]);
+  const [facilities, setFacilities] = useState([]);
 
   useEffect(() => {
     const getInmates = () => {
@@ -20,20 +13,25 @@ export default function FacilityList(props) {
         .then(response => {
           console.log(response.data);
           setFacilities(response.data);
-          console.log(facilities);
+          console.log(response.data[1]);
         })
         .catch(error => {
           console.log("the data was not returned", error);
         });
     };
     getInmates();
-  }, [facilities]);
+  }, []);
 
   return (
     <div className="inmate-list">
       {facilities.map(facility => (
-          <Facility  facility={facility}/>
-        
+        <Facility
+          key={facility.id}
+          id={facility.id}
+          Prison_Name={facility.Prison_Name}
+          Location={facility.Location}
+          available_prisoners={facility.available_prisoners}
+        />
       ))}
     </div>
   );

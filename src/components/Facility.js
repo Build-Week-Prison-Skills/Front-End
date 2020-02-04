@@ -5,12 +5,15 @@ import styled from "styled-components";
 </div> */}
 
 
-const Facility= ({ facility }) => {
-    const { prison_name } = facility;
+const Facility= (props) => {
+    
     return (
       <StyledFacility>
-             <h3>{prison_name}</h3>
-          
+             <h3>Facility: {props.Prison_Name}</h3>
+             <h3>id: {props.id}</h3>
+             <h3>Location: {props.Location}</h3>
+             <h3>Available prisoners = {props.available_prisoners}</h3>
+
       </StyledFacility>
     );
   };
