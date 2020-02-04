@@ -13,14 +13,20 @@ const Home = () => {
         benefiting both inmates and potential employers. Low risk individuals
         are helped to maintain their skills, realise their full potential whilst
         giving back to the community by utilising their skills in a meaningful
-        way. It gives a sense of meaning and purpose that is so often missing
-        and may help them find work beyond their sentence.{" "}
+        way. It gives a sense of purpose that is so often missing
+        and may help them find work beyond their sentence.  it also benefits the 
+        community and potential employers, as vital skills are not lost for the
+         duration of the sentence whilst in the prison system{" "}
       </h3>
 
-      <h1> Other heading </h1>
+      <h1> How does it work? </h1>
       <h3>
         {" "}
-        programme reintergration outreach helping society accomplish participate
+        Only willing inmates, vetted for safety and serving time for non violent 
+        offenses are considered.  This is a not for profit scheme which matches 
+        suitable candidates with appropriate industry or business.  The inmate 
+        recieves a fair wage for a fair work.  
+        Programme re-intergration outreach helping society accomplish participate
         pride goals self-respect salary release PITCH Pitch: This app allows
         prison management to broadcast the skill of inmates to make better use
         of their time using their skills to make a wage and becoming more
