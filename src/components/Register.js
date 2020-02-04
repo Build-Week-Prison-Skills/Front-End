@@ -17,18 +17,53 @@ function hasErrors(fieldsError) {
 
 export default function Register(props) {
   const [formValues, setFormValues] = useState(initialFormValues);
+  const [loadingUser, setLoadingUser] = useState(false);
+  const [registerError, setRegisterError] = useState("");
+  //console.log(registerError);
 
-  function submitHandler() {
+  useEffect(() => {
+    validateFields();
+  }, []);
+
+  const usernameError = isFieldTouched("username") && getFieldError("username");
+  const passwordError = isFieldTouched("password") && getFieldError("password");
+  const prisonIdError =
+    isFieldTouched("prison_id") && getFieldError("prison_id");
+
+  const handleChange = e => {
+    setLoginValues({
+      ...formValues,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  function submitHandler(e) {
+    e.preventDefault();
+    validateFields((err, formValues) => {
+      if (!err) {
+        doRegister(formValues);
+      }
+    });
+  }
+
+  const doRegister = () => {
+    setLoadingUser(true);
     axios
       .post("https://prisonerbw.herokuapp.com/api/auth/register", formValues)
       .then(response => {
+        setLoadingUser(false);
         setFormValues(initialFormValues);
+        props.history.push("/login");
       })
-      .catch(e => console.log(e))
+      .catch(error => {
+        let { message } = error.response.data;
+        setLoadingUser(false);
+        setRegisterError(message);
+      })
       .finally(() => {
         console.log("Axios request finished.");
       });
-  }
+  };
   return (
     <StyledReg>
       <h1>Register</h1>
