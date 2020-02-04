@@ -125,7 +125,7 @@ export default function InmateForm(props) {
               id="dayRelease"
               name="day_release"
               checked={inmateFormValues.check}
-              onPress={() => setInmateFormValues('check', !inmateFormValues.check)}
+              onClick={() => setInmateFormValues('check', !inmateFormValues.check)}
               onChange={e => handleChange(e)}
             />
             <ErrorMessage name="Name" component="div" className="error" />
