@@ -6,24 +6,31 @@ import styled from "styled-components";
 const Navigation = () => {
   return (
     <StyledNav className="navBar">
-      <div>
-        <Link to="/">Home </Link>
+      <div className="left">
+        <Link to="/">Home</Link>
       </div>
-      <div>
-        <Link to="/inmateList">Inmates</Link>
-      </div>
-      <div>
-        <Link to="/facilityList">Facilities </Link>
-      </div>
-      <div>
+
+      <div className="middle">
+        <div>
+          <Link to="/inmateList">Inmates</Link>
+        </div>
+        <div>
+          <Link to="/facilityList">Facilities </Link>
+        </div>
+        <div >
         <Link to="/addInmate">Add an Inmate </Link>
       </div>
-      <div>
-        <Link to="/register">Register </Link>
       </div>
-     
-      <div>
-        <Link to="/login">Login </Link>
+
+      
+      <div className="right">
+        <div >
+          <Link to="/register">Register </Link>
+        </div>
+
+        <div>
+          <Link to="/login">Login </Link>
+        </div>
       </div>
     </StyledNav>
   );
@@ -32,7 +39,22 @@ const Navigation = () => {
 export default Navigation;
 
 const StyledNav = styled.div`
-  border: 1px solid red;
-  display:flex;
-  justify-content:space-between;
+background-color:dark-navy;
+
+height:10%;
+  display: flex;
+  justify-content: space-between;
+  .middle{
+    display: flex;
+    justify-content: space-around;
+    div{padding:5px;}
+
+  }
+  .right{
+    display: flex;
+    justify-content: space-around;
+    div{padding:5px;}
+
+  }
+
 `;
