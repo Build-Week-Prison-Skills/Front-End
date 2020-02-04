@@ -1,27 +1,41 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import LogInForm from "./components/LogInForm";
+import Navigation from "./components/Navigation";
+import Home from "./components/Home";
+import InmateList from "./components/InmateList";
+import FacilityList from "./components/FacilityList";
+import Register from "./components/Register";
+import LogInForm from "./components/Login";
+import InmateForm from "./components/InmateForm";
+import { Route, Switch } from "react-router-dom";
+// import styled from "styled-components";
 
-function App() {
-  return (
-    <div className="App">
-      <LogInForm />
-      <nav>
-        <Link to="/">
-          <h1 className="log-in">Log In</h1>
-        </Link>
-      </nav>
-
+const App = () => (
+  <div>
+    <header>
+      <Navigation />
       <Switch>
         <Route exact path="/">
-          <HomePage />
+          <Home />
         </Route>
-        <Route exact path="/LogIn"></Route>
+        <Route exact path="/inmateList">
+          <InmateList />
+        </Route>
+        <Route exact path="/facilityList">
+          <FacilityList />
+        </Route>
+        <Route exact path="/addInmate">
+          <InmateForm/>
+        </Route>
+        <Route exact path="/register">
+          <Register />
+        </Route>
+        <Route exact path="/login">
+          <LogInForm/>
+        </Route>
       </Switch>
-    </div>
-  );
-}
+    </header>
+  </div>
+);
 
 export default App;

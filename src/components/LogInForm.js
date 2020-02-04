@@ -13,7 +13,6 @@ const StyledLogin = styled.div`
   margin: 20px;
 `;
 
-
 const initialState = {
   username: "",
   password: ""
@@ -68,7 +67,6 @@ export default function LogInForm(props) {
           <button type="submit">Submit</button>
         </Form>
       </Formik>
-      </StyledLogin>
-
+    </StyledLogin>
   );
 }
