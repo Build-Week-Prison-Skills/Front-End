@@ -69,27 +69,6 @@ function RegisterForm(props) {
           help={usernameError || ""}
         >
           {getFieldDecorator("username", {
-            rules: [
-              {
-                required: true,
-                type: "string",
-                message:
-                  "Please add an alphanumeric username with at least 2 characters long.!"
-              }
-            ]
-          })(
-            <Input
-              size="large"
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              placeholder="Username"
-            />
-          )}
-        </Form.Item>
-        <Form.Item
-          validateStatus={usernameError ? "error" : ""}
-          help={usernameError || ""}
-        >
-          {getFieldDecorator("username", {
             rules: [{ required: true, message: "Please input your username" }]
           })(
             <Input
