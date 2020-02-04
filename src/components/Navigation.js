@@ -1,60 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { navbar } from "materialize-css";
-import styled from "styled-components";
+import { Menu } from "antd";
 
 const Navigation = () => {
   return (
-    <StyledNav className="navBar">
-      <div className="left">
-        <Link to="/">Home</Link>
-      </div>
-
-      <div className="middle">
-        <div>
+    <>
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={["1"]}
+        style={{ lineHeight: "64px" }}
+      >
+        <Menu.Item key="1">
+          <Link to="/">Home</Link>
+        </Menu.Item>
+        <Menu.Item key="2">
           <Link to="/inmateList">Inmates</Link>
-        </div>
-        <div>
+        </Menu.Item>
+        <Menu.Item key="3">
           <Link to="/facilityList">Facilities </Link>
-        </div>
-        <div>
+        </Menu.Item>
+        <Menu.Item key="4">
           <Link to="/addInmate">Add an Inmate </Link>
-        </div>
-      </div>
-
-      <div className="right">
-        <div>
-          <Link to="/register">Register </Link>
-        </div>
-
-        <div>
+        </Menu.Item>
+        <Menu.Item key="5">
           <Link to="/login">Login </Link>
-        </div>
-      </div>
-    </StyledNav>
+        </Menu.Item>
+        <Menu.Item key="6">
+          <Link to="/register">Register </Link>
+        </Menu.Item>
+      </Menu>
+    </>
   );
 };
 
 export default Navigation;
-
-const StyledNav = styled.div`
-  background-color: dark-navy;
-
-  height: 10%;
-  display: flex;
-  justify-content: space-between;
-  .middle {
-    display: flex;
-    justify-content: space-around;
-    div {
-      padding: 5px;
-    }
-  }
-  .right {
-    display: flex;
-    justify-content: space-around;
-    div {
-      padding: 5px;
-    }
-  }
-`;
