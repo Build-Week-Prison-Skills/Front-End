@@ -24,9 +24,12 @@ const Navigation = () => {
           <Link to="/addInmate">Add an Inmate </Link>
         </Menu.Item>
         <Menu.Item key="5">
-          <Link to="/login">Login </Link>
+          <Link to="/addPrison">Add a Prison </Link>
         </Menu.Item>
         <Menu.Item key="6">
+          <Link to="/login">Login </Link>
+        </Menu.Item>
+        <Menu.Item key="7">
           <Link to="/register">Register </Link>
         </Menu.Item>
       </Menu>
