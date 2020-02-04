@@ -11,9 +11,6 @@ const initialVal = {
   prison_id: ""
 };
 
-//   { "username": "Admin",
-//   "password": "1234",
-//   "prison_id": 1 }
 export default function Register(props) {
   const [registeredStaff, setRegStaff] = useState([]);
 
@@ -34,7 +31,7 @@ export default function Register(props) {
   }
   return (
     <StyledReg>
-         <h1>Register</h1>
+      <h1>Register</h1>
       <Formik
         initialValues={initialVal}
         onSubmit={submitHandler}
@@ -79,7 +76,7 @@ export default function Register(props) {
         </Form>
       </Formik>
       <div>
-        <Link to="/login">Already Registered?  Go to login page</Link>
+        <Link to="/login">Already Registered? Go to login page</Link>
       </div>
     </StyledReg>
   );
@@ -102,20 +99,19 @@ const StyledReg = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
 
   height: 300px;
   margin: 20px auto;
-  padding-bottom:20px;
+  padding-bottom: 20px;
   border: blueviolet 2px solid;
-border-radius: 4px;
-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  form{
-      height:60%;
+  border-radius: 4px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  form {
+    height: 60%;
     display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:space-between;
-
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 `;
