@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const initialVal = {
   username: "",
   password: "",
-  prison_id: ""
+  prison_id: null 
 };
 
 //   { "username": "Admin",
