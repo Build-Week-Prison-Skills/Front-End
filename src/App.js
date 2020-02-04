@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import LogInForm from "./components/Login";
 import InmateForm from "./components/InmateForm";
 import { Route, Switch } from "react-router-dom";
+import PrisonProfilePage from "./components/PrisonProfilePage";
 import { Layout } from "antd";
 
 const { Header, Content } = Layout;
@@ -40,11 +41,11 @@ const App = () => {
             <Route exact path="/login">
               <LogInForm />
             </Route>
-            {/* <Route
+            <Route
           exact
           path="/facilityList/facility/:id"
           render={props => <PrisonProfilePage {...props} />}
-        /> */}
+        />
           </Switch>
         </Content>
       </Layout>
