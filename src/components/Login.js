@@ -18,8 +18,8 @@ function hasErrors(fieldsError) {
 function LoginForm(props) {
   const [loginValues, setLoginValues] = useState(initialLoginValues);
   const [loadingUser, setLoadingUser] = useState(false);
-  const [loginError, setLoginError] = useState(false);
-  console.log(loginValues);
+  const [loginError, setLoginError] = useState("");
+  //console.log(loginError);
   //antd form dependency
   const {
     getFieldDecoratorconst,
@@ -45,7 +45,7 @@ function LoginForm(props) {
     e.preventDefault();
     validateFields((err, loginValues) => {
       if (!err) {
-        console.log("Received values of form: ", loginValues);
+        // console.log("Received values of form: ", loginValues);
         doLogIn(loginValues);
         props.history.push("/");
       }
@@ -57,19 +57,19 @@ function LoginForm(props) {
     axios
       .post("https://prisonerbw.herokuapp.com/api/auth/login", loginValues)
       .then(response => {
-        console.log(response);
         setLoadingUser(false);
         localStorage.setItem("token", response.data.token);
       })
-      .catch(e => console.log(e))
-      .finally(() => {
-        console.log("Axios request finished.");
+      .catch(error => {
+        let { message } = error.response.data;
+        setLoadingUser(false);
+        setLoginError(message);
       });
   };
   return (
     <StyledContainer>
       <StyledForm onSubmit={e => handleSubmit(e)} className="login-form">
-        {loginError && typeof loginError === "string" && (
+        {loginError && (
           <Alert
             style={{ marginBottom: "1rem" }}
             message="Failed Login"
@@ -77,7 +77,10 @@ function LoginForm(props) {
             type="error"
           />
         )}
-        <Form.Item>
+        <Form.Item
+          validateStatus={usernameError ? "error" : ""}
+          help={usernameError || ""}
+        >
           {getFieldDecorator("username", {
             rules: [{ required: true, message: "Please input your username" }]
           })(
@@ -88,7 +91,10 @@ function LoginForm(props) {
             />
           )}
         </Form.Item>
-        <Form.Item>
+        <Form.Item
+          validateStatus={passwordError ? "error" : ""}
+          help={passwordError || ""}
+        >
           {getFieldDecorator("password", {
             rules: [
               {
@@ -117,6 +123,9 @@ function LoginForm(props) {
             htmlType="submit"
             className="login-form-button"
             onClick={props.startLoading}
+            size="large"
+            type="primary"
+            loading={loadingUser}
           >
             {loadingUser ? "Logging in" : "Log in"}
           </Button>
