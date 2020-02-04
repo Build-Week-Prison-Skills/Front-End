@@ -3,23 +3,16 @@ import axios from "axios";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { Form, Icon, Input, Button, Checkbox, Alert } from "antd";
-
 import styled from "styled-components";
-
-const initialLoginValues = {
-  username: "",
-  password: ""
-};
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 
 function LoginForm(props) {
-  const [loginValues, setLoginValues] = useState(initialLoginValues);
   const [loadingUser, setLoadingUser] = useState(false);
   const [loginError, setLoginError] = useState("");
-  console.log(loginValues);
+
   //antd form dependency
   const {
     getFieldDecoratorconst,
@@ -35,28 +28,21 @@ function LoginForm(props) {
   }, []);
   const usernameError = isFieldTouched("username") && getFieldError("username");
   const passwordError = isFieldTouched("password") && getFieldError("password");
-  const handleChange = e => {
-    setLoginValues({
-      ...loginValues,
-      [e.target.name]: e.target.value
-    });
-  };
 
   function handleSubmit(e) {
     e.preventDefault();
-    validateFields((err, loginValues) => {
+    validateFields((err, values) => {
       if (!err) {
-        // console.log("Received values of form: ", loginValues);
-        doLogIn(loginValues);
+        doLogIn(values);
         props.history.push("/");
       }
     });
   }
 
-  const doLogIn = () => {
+  const doLogIn = values => {
     setLoadingUser(true);
     axios
-      .post("https://prisonerbw.herokuapp.com/api/auth/login", loginValues)
+      .post("https://prisonerbw.herokuapp.com/api/auth/login", values)
       .then(response => {
         setLoadingUser(false);
         localStorage.setItem("token", response.data.token);
@@ -88,7 +74,6 @@ function LoginForm(props) {
             <Input
               prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
               placeholder="Username"
-              onChange={e => handleChange(e)}
             />
           )}
         </Form.Item>
@@ -109,7 +94,6 @@ function LoginForm(props) {
               prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
               type="password"
               placeholder="Password"
-              onChange={e => handleChange(e)}
             />
           )}
         </Form.Item>
