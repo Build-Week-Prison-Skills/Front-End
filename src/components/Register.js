@@ -5,24 +5,24 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 
-const initialVal = {
+const initialFormValues = {
   username: "",
   password: "",
   prison_id: ""
 };
 
-export default function Register(props) {
-  const [registeredStaff, setRegStaff] = useState([]);
+function hasErrors(fieldsError) {
+  return Object.keys(fieldsError).some(field => fieldsError[field]);
+}
 
-  function submitHandler(values, actions) {
+export default function Register(props) {
+  const [formValues, setFormValues] = useState(initialFormValues);
+
+  function submitHandler() {
     axios
-      .post("https://prisonerbw.herokuapp.com/api/auth/register", values)
+      .post("https://prisonerbw.herokuapp.com/api/auth/register", formValues)
       .then(response => {
-        console.log(response);
-        console.log(props);
-        setRegStaff([...registeredStaff, values]);
-        console.log(registeredStaff);
-        actions.resetForm();
+        setFormValues(initialFormValues);
       })
       .catch(e => console.log(e))
       .finally(() => {
