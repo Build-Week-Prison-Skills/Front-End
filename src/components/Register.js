@@ -1,25 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Alert, Form, Icon, Input, Button } from "antd";
 import styled from "styled-components";
-import * as Yup from "yup";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
-
-const initialFormValues = {
-  username: "",
-  password: "",
-  prison_id: ""
-};
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 
-export default function Register(props) {
-  const [formValues, setFormValues] = useState(initialFormValues);
+function RegisterForm(props) {
   const [loadingUser, setLoadingUser] = useState(false);
   const [registerError, setRegisterError] = useState("");
-  //console.log(registerError);
+
+  const {
+    getFieldDecorator,
+    getFieldsError,
+    isFieldTouched,
+    getFieldError,
+    validateFields
+  } = props.form;
 
   useEffect(() => {
     validateFields();
@@ -30,123 +29,158 @@ export default function Register(props) {
   const prisonIdError =
     isFieldTouched("prison_id") && getFieldError("prison_id");
 
-  const handleChange = e => {
-    setLoginValues({
-      ...formValues,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  function submitHandler(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    validateFields((err, formValues) => {
+    validateFields((err, values) => {
+      console.log(values);
       if (!err) {
-        doRegister(formValues);
+        doRegister(values);
       }
     });
   }
 
-  const doRegister = () => {
+  const doRegister = values => {
     setLoadingUser(true);
     axios
-      .post("https://prisonerbw.herokuapp.com/api/auth/register", formValues)
+      .post("https://prisonerbw.herokuapp.com/api/auth/register", values)
       .then(response => {
         setLoadingUser(false);
-        setFormValues(initialFormValues);
         props.history.push("/login");
       })
       .catch(error => {
         let { message } = error.response.data;
         setLoadingUser(false);
         setRegisterError(message);
-      })
-      .finally(() => {
-        console.log("Axios request finished.");
       });
   };
   return (
-    <StyledReg>
-      <h1>Register</h1>
-      <Formik
-        initialValues={initialVal}
-        onSubmit={submitHandler}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          {/* Name */}
-          <div className="username">
-            <label htmlFor="current_username">username</label>
-            <Field
-              type="text"
-              id="current_username"
-              name="username"
-              placeholder="Enter username here"
+    <StyledContainer>
+      <StyledForm onSubmit={e => handleSubmit(e)}>
+        {registerError && (
+          <Alert
+            style={{ marginBottom: "1rem" }}
+            message="Failed to Register"
+            description={registerError}
+            type="error"
+          />
+        )}
+        <Form.Item
+          validateStatus={usernameError ? "error" : ""}
+          help={usernameError || ""}
+        >
+          {getFieldDecorator("username", {
+            rules: [
+              {
+                required: true,
+                type: "string",
+                message:
+                  "Please add an alphanumeric username with at least 2 characters long.!"
+              }
+            ]
+          })(
+            <Input
+              size="large"
+              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+              placeholder="Username"
             />
-            <ErrorMessage name="username" component="div" className="error" />
-          </div>
-          <div className="password">
-            {/* //Password */}
-            <label htmlFor="current_password">Password</label>
-            <Field
-              type="password"
-              id="current_password"
-              name="password"
-              placeholder="Enter your password here"
+          )}
+        </Form.Item>
+        <Form.Item
+          validateStatus={usernameError ? "error" : ""}
+          help={usernameError || ""}
+        >
+          {getFieldDecorator("username", {
+            rules: [{ required: true, message: "Please input your username" }]
+          })(
+            <Input
+              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+              placeholder="Username"
             />
-            <ErrorMessage name="password" component="div" className="error" />
-          </div>
-          <div className="prison-id">
-            <label htmlFor="prison_id">Prison id</label>
-            <Field
-              type="text"
-              id="prison_id"
-              name="prison_id"
-              placeholder="Enter facility ID here"
-            />
-            <ErrorMessage name="prison_id" component="div" className="error" />
-          </div>
+          )}
+        </Form.Item>
 
-          {/* //submit button */}
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
-      <div>
-        <Link to="/login">Already Registered? Go to login page</Link>
-      </div>
-    </StyledReg>
+        <Form.Item
+          validateStatus={passwordError ? "error" : ""}
+          help={passwordError || ""}
+        >
+          {getFieldDecorator("password", {
+            rules: [
+              {
+                required: true,
+                min: 6,
+                message: "Password must be 6 characters or more"
+              }
+            ]
+          })(
+            <Input
+              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+              type="password"
+              placeholder="Password"
+            />
+          )}
+        </Form.Item>
+        <Form.Item
+          validateStatus={prisonIdError ? "error" : ""}
+          help={prisonIdError || ""}
+        >
+          {getFieldDecorator("prison_id", {
+            rules: [
+              {
+                required: true,
+                min: 1,
+                pattern: /^-?[0-9]*(\.[0-9]*)?$/,
+                message: "Enter your Prison ID number"
+              }
+            ]
+          })(
+            <Input
+              prefix={
+                <Icon type="number" style={{ color: "rgba(0,0,0,.25)" }} />
+              }
+              type="text"
+              placeholder="Prison Id"
+            />
+          )}
+        </Form.Item>
+        <Form.Item>
+          <Button
+            style={{ width: "100%" }}
+            disabled={hasErrors(getFieldsError())}
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+            onClick={props.startLoading}
+            size="large"
+            type="primary"
+            loading={loadingUser}
+          >
+            {loadingUser ? "Registering" : "Register"}
+          </Button>
+          Or <Link to="/login">Already have an account?</Link>
+        </Form.Item>
+      </StyledForm>
+    </StyledContainer>
   );
 }
 
-const validationSchema = Yup.object().shape({
-  username: Yup.string()
-    .required("Please enter a username")
-    .min(2, "Too Short!")
-    .max(25, "Too Long!"),
-  password: Yup.string()
-    .required("Please enter a password")
-    .min(5, "Too Short!")
-    .max(25, "Too Long!")
-    .matches(/(?=.*[0-9])/, "Must contain at least one number")
-});
+export const Register = Form.create({ name: "normal_login" })(RegisterForm);
 
-const StyledReg = styled.div`
-  width: 300px;
+const StyledContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  min-height: 80vh;
+`;
 
-  height: 300px;
-  margin: 20px auto;
-  padding-bottom: 20px;
-  border: blueviolet 2px solid;
-  border-radius: 4px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  form {
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+const StyledForm = styled(Form)`
+  max-width: 25rem;
+  padding: 2.5rem !important;
+  margin: 2.5rem !important;
+  background: #fbfbfb;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  @media only screen and (max-width: 600px) {
+    padding: 2.5rem 1.5rem !important;
+    margin: 1.5rem !important;
   }
 `;

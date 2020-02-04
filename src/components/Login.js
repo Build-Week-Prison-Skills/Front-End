@@ -19,7 +19,7 @@ function LoginForm(props) {
   const [loginValues, setLoginValues] = useState(initialLoginValues);
   const [loadingUser, setLoadingUser] = useState(false);
   const [loginError, setLoginError] = useState("");
-  //console.log(loginError);
+  console.log(loginValues);
   //antd form dependency
   const {
     getFieldDecoratorconst,
@@ -69,7 +69,7 @@ function LoginForm(props) {
   };
   return (
     <StyledContainer>
-      <StyledForm onSubmit={e => handleSubmit(e)} className="login-form">
+      <StyledForm onSubmit={e => handleSubmit(e)}>
         {loginError && (
           <Alert
             style={{ marginBottom: "1rem" }}
@@ -138,7 +138,7 @@ function LoginForm(props) {
   );
 }
 
-export const Login = Form.create({ name: "normal_login" })(LoginForm);
+export const Login = Form.create({ name: "normal_register" })(LoginForm);
 
 const StyledContainer = styled.div`
   display: flex;
