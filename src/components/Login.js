@@ -118,6 +118,7 @@ function LoginForm(props) {
             initialValue: true
           })(<Checkbox>Remember me</Checkbox>)}
           <Button
+            style={{ width: "100%" }}
             disabled={hasErrors(getFieldsError())}
             type="primary"
             htmlType="submit"
