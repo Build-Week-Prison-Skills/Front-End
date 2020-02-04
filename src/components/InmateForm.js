@@ -15,9 +15,9 @@ export default function InmateForm(props) {
 
   const resetTo = {
     Name: "",
-    skills: [],
     Prison_id: "",
-    day_release:0
+    day_release:false,
+    skills: [],
   };
 
   const handleChange = event => {
@@ -124,6 +124,8 @@ export default function InmateForm(props) {
               type="checkbox"
               id="dayRelease"
               name="day_release"
+              checked={inmateFormValues.check}
+              onPress={() => setInmateFormValues('check', !inmateFormValues.check)}
               onChange={e => handleChange(e)}
             />
             <ErrorMessage name="Name" component="div" className="error" />
