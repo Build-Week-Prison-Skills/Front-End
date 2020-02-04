@@ -10,9 +10,9 @@ import InmateForm from "./components/InmateForm";
 import { Route, Switch } from "react-router-dom";
 // import styled from "styled-components";
 
-const App = () => (
-  <div>
-    <header>
+const App = () => {
+  return (
+    <div>
       <Navigation />
       <Switch>
         <Route exact path="/">
@@ -25,17 +25,17 @@ const App = () => (
           <FacilityList />
         </Route>
         <Route exact path="/addInmate">
-          <InmateForm/>
+          <InmateForm />
         </Route>
         <Route exact path="/register">
           <Register />
         </Route>
         <Route exact path="/login">
-          <LogInForm/>
+          <LogInForm />
         </Route>
       </Switch>
-    </header>
-  </div>
-);
+    </div>
+  );
+};
 
 export default App;
