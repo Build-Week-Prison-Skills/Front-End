@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Inmate from "./Inmate";
 
-export default function InmateList(props) {
-  const [inmates, setInmates] = useState([]);
+export default function InmateList({inmates, setInmates}) {
+ 
 
   useEffect(() => {
     const getInmates = () => {

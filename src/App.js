@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./App.css";
 import "antd/dist/antd.css";
 import Navigation from "./components/Navigation";
@@ -16,6 +16,7 @@ import { Layout } from "antd";
 const { Header, Content } = Layout;
 
 const App = () => {
+  const [inmates, setInmates] = useState([]);
   return (
     <div>
       <Layout>
@@ -27,9 +28,11 @@ const App = () => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/inmateList">
-              <InmateList />
-            </Route>
+            <Route exact path="/inmateList"
+            render={props => <InmateList {...props} inmates={inmates} setInmates={setInmates}/>}
+            />
+              {/* <InmateList /> */}
+            {/* </Route> */}
             <Route exact path="/facilityList">
               <FacilityList />
             </Route>
@@ -43,7 +46,7 @@ const App = () => {
             <Route
               exact
               path="/facilityList/facility/:id"
-              render={props => <PrisonProfilePage {...props} />}
+              render={props => <PrisonProfilePage {...props} inmates={inmates} setInmates={setInmates} />}
             />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
