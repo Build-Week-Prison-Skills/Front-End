@@ -128,6 +128,7 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 80vh;
 `;
 
 const StyledForm = styled(Form)`
