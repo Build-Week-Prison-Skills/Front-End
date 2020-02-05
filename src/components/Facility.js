@@ -1,21 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-{
-  /* <div>
-<Link to="/facility${id}">Facility</Link>
-</div> */
-}
+import {Link} from "react-router-dom"
+import { reach } from "yup";
+
+
+
+   
+
+
+
 
 const Facility = ({ facility }) => {
-  const { id, prison_name, location, available_prisoners } = facility;
+  const { id, Prison_Name, Location, available_prisoners } = facility;
   return (
     <div>
-    <StyledFacility>
-      <h2>id: </h2>
-      <h2>prison_name:</h2>
-      <h3>location:</h3>
-      <h3>available_prisoners:</h3>
+      <Link to={`/facilityList/facility/${id}`}>
+      <StyledFacility>
+    <h2>id:{id} </h2>
+  <h2>prison_name:{Prison_Name}</h2>
+      <h3>location:{Location}</h3>
+        <h3>available_prisoners:{available_prisoners}</h3>
     </StyledFacility>
+
+      </Link>
+   
     </div>
   );
 };

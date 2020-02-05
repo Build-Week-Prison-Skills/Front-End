@@ -10,14 +10,14 @@ import { Login } from "./components/Login";
 import InmateForm from "./components/InmateForm";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
-import PrisonProfilePage from './components/PrisonProfilePage'
+import PrisonProfilePage from "./components/PrisonProfilePage";
 
 const { Header, Content } = Layout;
 
 const App = () => {
   return (
     <div>
-      <PrisonProfilePage/>
+      
       <Layout>
         <Header>
           <Navigation />
@@ -33,6 +33,12 @@ const App = () => {
             <Route exact path="/facilityList">
               <FacilityList />
             </Route>
+            <Route
+              exact
+              path="/facilityList/facility/:id"
+              render={props => <PrisonProfilePage {...props} />}
+            />
+
             <Route path="/prisonprofile" component={PrisonProfilePage} />
             <Route exact path="/addInmate">
               <InmateForm />

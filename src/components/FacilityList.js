@@ -27,7 +27,7 @@ export default function FacilityList(props) {
         });
     };
     getInmates();
-  }, [facilities]);
+  },[]);
 
   return (
     <div className="inmate-list">

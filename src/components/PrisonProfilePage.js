@@ -17,13 +17,15 @@ const initialPrisonState = {
 };
 export default function PrisonProfilePage(props) {
   const [prison, setPrison] = useState(initialPrisonState);
-
+console.log(props)
   useEffect(() => {
+    const id= props.match.params.id
     axios
-      .get("https://prisonerbw.herokuapp.com/api/auth/prisons/:1")
+      .get(`https://prisonerbw.herokuapp.com/api/auth/prisons/:${props.id}`)
       .then(response => {
         console.log(response.data);
-        //setPrisons(response.data);
+        setPrison(response.data);
+        console.log(setPrison)
       })
       .catch(error => {
         console.log("the data was not returned", error);
@@ -31,11 +33,11 @@ export default function PrisonProfilePage(props) {
 
     //setPrison(fakeData);
   }, []);
-
+const {id} = prison;
   return (
     <div className="prisons">
-      
-      <p>id</p>
+    
+      <p>{id}</p>
         <p>{prison.id}</p>
         <p>Prison Name:</p>
         <p>{prison.prison_name}</p>
