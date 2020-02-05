@@ -45,7 +45,7 @@ function LoginForm(props) {
       .then(response => {
         setLoadingUser(false);
         localStorage.setItem("token", response.data.token);
-        props.history.push("/");
+        props.history.push("/facilityList");
       })
       .catch(error => {
         let { message } = error.response.data;
@@ -126,10 +126,11 @@ export const Login = Form.create({ name: "normal_register" })(LoginForm);
 
 const StyledContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 80vh;
 `;
+
 const StyledForm = styled(Form)`
   max-width: 25rem;
   padding: 2.5rem !important;
