@@ -6,7 +6,7 @@ import { withAuth } from "./WithAuth";
 
 export default function PrisonForm(props) {
   const [prisonFormValues, setPrisonFormValues] = useState({
-    id: null,
+    // id: null,
     Prison_Name: "",
     Location: "",
     available_prisoners: 0
@@ -14,30 +14,20 @@ export default function PrisonForm(props) {
   console.log(prisonFormValues);
 
   const resetPrisonTo = {
-    id: null,
+    // id: null,
     Prison_Name: "",
     Location: "",
     available_prisoners: 0
   };
 
-  const handleChangePrison = event => {
-    console.log(event.target);
-    setPrisonFormValues({
-      ...prisonFormValues,
-      [event.target.name]: event.target.value
-    });
-  };
-
-  function handleSubmitPrison(values, e) {
+  function handleSubmitPrison(values, actions) {
     // e.preventDefault();
-    console.log(prisonFormValues);
+    console.log(values);
     withAuth()
       .post("https://prisonerbw.herokuapp.com/api/auth/prisons", values)
-      .then(event => {
-        console.log(event);
-        console.log(props);
-        console.log(values);
-        setPrisonFormValues(resetPrisonTo);
+      .then(response => {
+        console.log(response);
+        actions.resetForm();
       })
       .catch(e => console.log(e))
       .finally(() => {
@@ -48,26 +38,8 @@ export default function PrisonForm(props) {
   return (
     <StyledAddPrison>
       <h1>Add a Prison or correctional facility</h1>
-      <Formik
-        onSubmit={e => handleSubmitPrison(prisonFormValues, e)}
-        // initialValues={resetPrisonTo}
-      >
+      <Formik onSubmit={handleSubmitPrison} initialValues={resetPrisonTo}>
         <Form>
-          {/* id */}
-          <div>
-            <label className="left" htmlFor="prison-id">
-              id
-            </label>
-            <Field
-              className="right"
-              type="number"
-              id="prison-id"
-              name="id"
-              placeholder="Enter 15 digit prison id"
-              onChange={e => handleChangePrison(e)}
-            />
-            <ErrorMessage name="id" component="div" className="error" />
-          </div>
           {/*Prison_Name*/}
           <div>
             <label className="left" htmlFor="PrisonName">
@@ -79,13 +51,26 @@ export default function PrisonForm(props) {
               id="PrisonName"
               name="Prison_Name"
               placeholder="Prison/Facility Name"
-              onChange={e => handleChangePrison(e)}
             />
             <ErrorMessage
               name="Prison_Name"
               component="div"
               className="error"
             />
+          </div>
+          {/* Location */}
+          <div>
+            <label className="left" htmlFor="prison-location">
+             Location
+            </label>
+            <Field
+              className="right"
+              type="text"
+              id="prison-location"
+              name="Location"
+              placeholder="Enter prison address"
+            />
+            <ErrorMessage name="Location" component="div" className="error" />
           </div>
 
           {/*available_prisoners */}
@@ -99,7 +84,6 @@ export default function PrisonForm(props) {
               id="availablePrisoners"
               name="available_prisoners"
               placeholder="number"
-              onChange={e => handleChangePrison(e)}
             />
             <ErrorMessage
               name="available_prisoners"
@@ -144,37 +128,3 @@ const StyledAddPrison = styled.div`
     justify-content: space-between;
   }
 `;
-//Attempt2(combined)
-// const handleChange = event => {
-//   console.log(event.target)
-//   if (event.target.type === "checkbox") {
-//         setInmateFormValues({
-//           ...inmateFormValues,
-//           [event.target.name]: event.target.checked
-//         });
-//       } else if (event.target.name === "skills") {
-//             setInmateFormValues({
-//               ...inmateFormValues,
-//               [event.target.name]: [...inmateFormValues.skills, event.target.value]
-//             });
-//           } else {
-//         setInmateFormValues({
-//           ...inmateFormValues,
-//           [event.target.name]: event.target.value
-//         });
-//       }
-// };
-//attempt1
-// const handleChange = event => {
-//  else if (event.target.name === "skills") {
-//     setInmateFormValues({
-//       ...inmateFormValues,
-//       [event.target.name]: [...inmateFormValues.skills, event.target.value]
-//     });
-//   } else {
-//     setInmateFormValues({
-//       ...inmateFormValues,
-//       [event.target.name]: event.target.value
-//     });
-//   }
-// };

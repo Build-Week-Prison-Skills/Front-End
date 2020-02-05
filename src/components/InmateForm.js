@@ -11,40 +11,23 @@ export default function InmateForm(props) {
     day_release: "",
     skills: ""
   });
+
   console.log(inmateFormValues);
 
   const resetTo = {
     Name: "",
     Prison_id: "",
-    day_release:false,
-    skills: "",
+    day_release: false,
+    skills: ""
   };
 
-  const handleChange = event => {
-    console.log(event.target)
-    if (event.target.type === "checkbox") {
-          setInmateFormValues({
-            ...inmateFormValues,
-            [event.target.name]: event.target.checked
-          });
-        } else {
-          setInmateFormValues({
-            ...inmateFormValues,
-            [event.target.name]: event.target.value
-          });
-        }
-  };
-
-  function handleSubmitPrisoner(values, e) {
-    // e.preventDefault();
-    console.log(inmateFormValues)
+  function handleSubmitPrisoner(values, actions) {
+    console.log(values);
     withAuth()
       .post("https://prisonerbw.herokuapp.com/api/auth/prisoners", values)
-      .then(event => {
-        console.log(event);
-        console.log(props);
-        console.log(values);
-        setInmateFormValues(resetTo);
+      .then(response => {
+        console.log(response);
+        actions.resetForm();
       })
       .catch(e => console.log(e))
       .finally(() => {
@@ -52,14 +35,10 @@ export default function InmateForm(props) {
       });
   }
 
-
   return (
     <StyledAddInmate>
       <h1>Add an inmate</h1>
-      <Formik
-        onSubmit={e => handleSubmitPrisoner(inmateFormValues, e)}
-        // initialValues={resetTo}
-      >
+      <Formik onSubmit={handleSubmitPrisoner} initialValues={resetTo}>
         <Form>
           {/* username */}
           <div>
@@ -67,23 +46,21 @@ export default function InmateForm(props) {
             <Field
               type="text"
               id="name"
-              name="Name"
+              name="name"
               placeholder="Enter inmates name here"
-              onChange={e => handleChange(e)}
             />
-            <ErrorMessage name="Name" component="div" className="error" />
+            <ErrorMessage name="name" component="div" className="error" />
           </div>
           {/*Prison_id*/}
           <div>
-            <label htmlFor="PrisonId">I.D.    </label>
+            <label htmlFor="PrisonId">I.D. </label>
             <Field
               type="text"
               id="PrisonId"
-              name="Prison_id"
+              name="prison_id"
               placeholder="Prison/Facility id"
-              onChange={e => handleChange(e)}
             />
-            <ErrorMessage name="Name" component="div" className="error" />
+            <ErrorMessage name="prison_id" component="div" className="error" />
           </div>
 
           {/* skills */}
@@ -94,7 +71,6 @@ export default function InmateForm(props) {
               id="current-skills"
               name="skills"
               placeholder="comma seperated list of skills"
-              onChange={e => handleChange(e)}
             />
             <ErrorMessage name="skills" component="div" className="error" />
           </div>
@@ -106,8 +82,9 @@ export default function InmateForm(props) {
               id="dayRelease"
               name="day_release"
               checked={inmateFormValues.check}
-              onClick={() => setInmateFormValues('check', !inmateFormValues.check)}
-              onChange={e => handleChange(e)}
+              onClick={() =>
+                setInmateFormValues("check", !inmateFormValues.check)
+              }
             />
             <ErrorMessage name="Name" component="div" className="error" />
           </div>
@@ -142,37 +119,3 @@ const StyledAddInmate = styled.div`
     justify-content: space-between;
   }
 `;
-//Attempt2(combined)
-// const handleChange = event => {
-//   console.log(event.target)
-//   if (event.target.type === "checkbox") {
-//         setInmateFormValues({
-//           ...inmateFormValues,
-//           [event.target.name]: event.target.checked
-//         });
-//       } else if (event.target.name === "skills") {
-//             setInmateFormValues({
-//               ...inmateFormValues,
-//               [event.target.name]: [...inmateFormValues.skills, event.target.value]
-//             });
-//           } else {
-//         setInmateFormValues({
-//           ...inmateFormValues,
-//           [event.target.name]: event.target.value
-//         });
-//       }
-// };
-//attempt1
-  // const handleChange = event => {
-  //  else if (event.target.name === "skills") {
-  //     setInmateFormValues({
-  //       ...inmateFormValues,
-  //       [event.target.name]: [...inmateFormValues.skills, event.target.value]
-  //     });
-  //   } else {
-  //     setInmateFormValues({
-  //       ...inmateFormValues,
-  //       [event.target.name]: event.target.value
-  //     });
-  //   }
-  // };

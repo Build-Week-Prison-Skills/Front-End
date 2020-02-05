@@ -45,8 +45,7 @@ function LoginForm(props) {
       .then(response => {
         setLoadingUser(false);
         localStorage.setItem("token", response.data.token);
-        console.log(response.data.token);
-        actions.resetForm();
+         
       })
       .catch(error => {
         let { message } = error.response.data;
