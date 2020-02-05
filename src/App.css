@@ -1,3 +1,17 @@
 .App {
   text-align: center;
 }
+
+/* antd login form */
+
+.ant-layout {
+  height: 100vh;
+}
+/* .ant-form.ant-form-horizontal.login-form {
+  border: 1px solid grey;
+  max-width: 300px;
+  margin: 5% auto;
+}
+.login-form-forgot {
+  float: right;
+} */

@@ -5,8 +5,8 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import InmateList from "./components/InmateList";
 import FacilityList from "./components/FacilityList";
-import Register from "./components/Register";
-import LogInForm from "./components/Login";
+import { Register } from "./components/Register";
+import { Login } from "./components/Login";
 import InmateForm from "./components/InmateForm";
 import PrisonForm from "./components/PrisonForm ";
 import { Route, Switch } from "react-router-dom";
@@ -39,17 +39,14 @@ const App = () => {
             <Route exact path="/addPrison">
               <PrisonForm />
             </Route>
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/login">
-              <LogInForm />
-            </Route>
+
             <Route
-          exact
-          path="/facilityList/facility/:id"
-          render={props => <PrisonProfilePage {...props} />}
-        />
+              exact
+              path="/facilityList/facility/:id"
+              render={props => <PrisonProfilePage {...props} />}
+            />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
           </Switch>
         </Content>
       </Layout>
