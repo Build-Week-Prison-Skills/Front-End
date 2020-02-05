@@ -45,7 +45,7 @@ function LoginForm(props) {
       .then(response => {
         setLoadingUser(false);
         localStorage.setItem("token", response.data.token);
-         
+        props.history.push("/facilityList");
       })
       .catch(error => {
         let { message } = error.response.data;
@@ -128,7 +128,7 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  `
+`;
 
 const StyledForm = styled(Form)`
   max-width: 25rem;

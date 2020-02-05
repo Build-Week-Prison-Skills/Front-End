@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { withAuth } from "./WithAuth";
 
 export default function PrisonForm(props) {
   const [prisonFormValues, setPrisonFormValues] = useState({
-    // id: null,
     Prison_Name: "",
     Location: "",
     available_prisoners: 0
@@ -14,14 +12,12 @@ export default function PrisonForm(props) {
   console.log(prisonFormValues);
 
   const resetPrisonTo = {
-    // id: null,
     Prison_Name: "",
     Location: "",
     available_prisoners: 0
   };
 
   function handleSubmitPrison(values, actions) {
-    // e.preventDefault();
     console.log(values);
     withAuth()
       .post("https://prisonerbw.herokuapp.com/api/auth/prisons", values)
@@ -61,7 +57,7 @@ export default function PrisonForm(props) {
           {/* Location */}
           <div>
             <label className="left" htmlFor="prison-location">
-             Location
+              Location
             </label>
             <Field
               className="right"

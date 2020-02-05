@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-// import { Link } from "react-router-dom";
+import styled from "styled-components";
 import Facility from "./Facility";
 
 export default function FacilityList(props) {
@@ -22,7 +22,7 @@ export default function FacilityList(props) {
   }, []);
 
   return (
-    <div className="inmate-list">
+    <styledFacilityList className="inmate-list">
       {facilities.map(facility => (
         <Facility
           key={facility.id}
@@ -32,6 +32,11 @@ export default function FacilityList(props) {
           available_prisoners={facility.available_prisoners}
         />
       ))}
-    </div>
+    </styledFacilityList>
   );
 }
+
+const styledFacilityList = styled.div`
+display:flex;
+flex-direction:column-reverse;
+`
