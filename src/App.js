@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import InmateList from "./components/InmateList";
 import FacilityList from "./components/FacilityList";
 import Register from "./components/Register";
-import LogInForm from "./components/Login";
+import { Login } from "./components/Login";
 import InmateForm from "./components/InmateForm";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
@@ -38,7 +38,7 @@ const App = () => {
               <Register />
             </Route>
             <Route exact path="/login">
-              <LogInForm />
+              <Login />
             </Route>
           </Switch>
         </Content>
