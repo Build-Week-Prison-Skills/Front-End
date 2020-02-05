@@ -3,6 +3,8 @@ import fence from "../img/fence.jpeg";
 import styled from "styled-components";
 
 
+
+
 const Home = () => {
   return (
     <div>

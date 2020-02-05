@@ -10,6 +10,7 @@ import LogInForm from "./components/Login";
 import InmateForm from "./components/InmateForm";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
+import PrisonProfilePage from './components/PrisonProfilePage'
 
 const { Header, Content } = Layout;
 
@@ -31,6 +32,7 @@ const App = () => {
             <Route exact path="/facilityList">
               <FacilityList />
             </Route>
+            <Route path="/prisonprofile" component={PrisonProfilePage} />
             <Route exact path="/addInmate">
               <InmateForm />
             </Route>

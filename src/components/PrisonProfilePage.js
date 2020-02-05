@@ -1,58 +1,44 @@
-import { render } from "react-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-class MainContainer extends React.Component {
-  render() {
-    return (
-      <div className="main-container">
-        <div className="nav-container">
-          <a></a>
-          <a></a>
-          <a></a>
-          <a></a>
-          <a></a>
-        </div>
+// const fakeData = {
+//   id: 1,
+//   prison_name: "Big Prison",
+//   location: "123 Bad Street",
+//   available_prisoners: 101
+// };
 
-        <aside className="group-name">
-          <table>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
-        </aside>
+const initialPrisonState = {
+  id: null,
+  prison_name: "",
+  location: "",
+  available_prisoners: null
+};
+export default function PrisonProfilePage(props) {
+  const [prison, setPrison] = useState(initialPrisonState);
 
-        <div className="cards-container">
-          <div className="card1"></div>
-          <div className="card2"></div>
-          <div className="card3"></div>
-          <div className="card4"></div>
-        </div>
+  useEffect(() => {
+    axios
+      .get("https://prisonerbw.herokuapp.com/api/auth/prisons/:1")
+      .then(response => {
+        console.log(response.data);
+        //setPrisons(response.data);
+      })
+      .catch(error => {
+        console.log("the data was not returned", error);
+      });
+
+    //setPrison(fakeData);
+  }, []);
+
+  return (
+    <div className="prisons">
+      <div>
+        <p>Prison Name:</p>
+        <p>{prison.prison_name}</p>
       </div>
-    );
-  }
-}
+    </div>
+  )
+};
+  
