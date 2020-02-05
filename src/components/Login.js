@@ -34,7 +34,6 @@ function LoginForm(props) {
     validateFields((err, values) => {
       if (!err) {
         doLogIn(values);
-        props.history.push("/");
       }
     });
   }
@@ -46,6 +45,7 @@ function LoginForm(props) {
       .then(response => {
         setLoadingUser(false);
         localStorage.setItem("token", response.data.token);
+        props.history.push("/");
       })
       .catch(error => {
         let { message } = error.response.data;
