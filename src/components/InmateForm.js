@@ -20,43 +20,37 @@ export default function InmateForm(props) {
     skills: ""
   };
   function handleSubmitPrisoner(values, actions) {
-    axios.post("https://prisonerbw.herokuapp.com/api/prisoners", values)
-    .then(event => {
-      console.log(event);
-      console.log(props);
-      console.log(values);
-      // setInmate([...inmate,values ]);
-    
-      actions.resetForm();
-    })
-    .catch(e => console.log(e))
-    .finally(() => {
-      console.log("Axios request finished.");
-    });
-}
- 
-  
+    axios
+      .post("https://prisonerbw.herokuapp.com/api/prisoners", values)
+      .then(event => {
+        console.log(event);
+        console.log(props);
+        console.log(values);
+        // setInmate([...inmate,values ]);
 
-    // GetToken()
-    //   .post("https://prisonerbw.herokuapp.com/api/prisoners")
-    //   .then(response => {
-    //     console.log(response.data);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
- 
+        actions.resetForm();
+      })
+      .catch(e => console.log(e))
+      .finally(() => {
+        console.log("Axios request finished.");
+      });
+  }
+
+  // GetToken()
+  //   .post("https://prisonerbw.herokuapp.com/api/prisoners")
+  //   .then(response => {
+  //     console.log(response.data);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
 
   return (
     <StyledAddInmate>
       <h1>Add an inmate</h1>
-       <Formik
-          onSubmit={handleSubmitPrisoner}
-        initialValues={resetTo}
-      
-      >
+      <Formik onSubmit={handleSubmitPrisoner} initialValues={resetTo}>
         <Form>
-            {/* username */}
+          {/* username */}
           <div>
             <label htmlFor="user-name">Name</label>
             <Field
@@ -67,7 +61,7 @@ export default function InmateForm(props) {
             />
             <ErrorMessage name="Name" component="div" className="error" />
           </div>
-            {/*Prison_id*/}
+          {/*Prison_id*/}
           <div>
             <label htmlFor="user-name">Prison id</label>
             <Field
@@ -79,61 +73,51 @@ export default function InmateForm(props) {
             <ErrorMessage name="Name" component="div" className="error" />
           </div>
 
-           
           {/* skills */}
           <div>
-                       <label htmlFor="user-name">skills</label>
+            <label htmlFor="user-name">skills</label>
             <Field
               type="text"
               id="current-skills"
-              name="skills" 
-              placeholder="comma seperated list of skills"   
+              name="skills"
+              placeholder="comma seperated list of skills"
             />
             <ErrorMessage name="skills" component="div" className="error" />
           </div>
-           {/*day_release*/}
-           <div>
+          {/*day_release*/}
+          <div>
             <label htmlFor="user-name">day release?</label>
-            <Field
-              type="checkbox"
-              id="dayRelease"
-              name="day_release"
-              
-            />
+            <Field type="checkbox" id="dayRelease" name="day_release" />
             <ErrorMessage name="Name" component="div" className="error" />
           </div>
-         
+
           <div>
             {/* //submit button */}
             <button type="submit">Submit</button>
           </div>
-
         </Form>
       </Formik>
-    </StyledAddInmate>  
-    
+    </StyledAddInmate>
   );
 }
-
 
 const StyledAddInmate = styled.div`
   width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
   height: 300px;
   margin: 20px auto;
-  padding-bottom:20px;
-    border: blueviolet 2px solid;
-border-radius: 4px;
-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  form{
-      height:60%;
+  padding-bottom: 20px;
+  border: blueviolet 2px solid;
+  border-radius: 4px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  form {
+    height: 60%;
     display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:space-between;
-
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 `;
