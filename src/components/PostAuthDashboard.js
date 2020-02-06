@@ -9,10 +9,7 @@ const PostAuthDashboard = () => {
       <div>
         <Link to="/">Home </Link>
       </div>
-      <div>
-        <Link to="/inmateList">Inmates</Link>
-      </div>
-      <div>
+          <div>
         <Link to="/facilityList">Facilities </Link>
       </div>
       <div>

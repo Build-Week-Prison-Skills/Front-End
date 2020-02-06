@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
+ import styled from "styled-components";
 
 
 
@@ -11,27 +10,25 @@ const Home = () => {
   return (
    < MyDiv>
     <div>
-      
       <h1 className="main-title"> Prisoner Skills</h1>
-      
       <h2>Recruit skilled candidates, whilst helping rehabilitation</h2>
-      
+
       <h2 className="mission-statement">Mission Statement</h2>
-      <h3 className="mission-statement">
-        Prisoner skills is a rehabilitation focused venture aimed at mutualy
+      
+       <p className="mission-statement"> Prisoner skills is a rehabilitation focused venture aimed at mutualy
         benefiting both inmates and potential employers. Low risk individuals
         are helped to maintain their skills, realise their full potential whilst
         giving back to the community by utilising their skills in a meaningful
         way. It gives a sense of purpose that is so often missing
         and may help them find work beyond their sentence.  it also benefits the 
         community and potential employers, as vital skills are not lost for the
-         duration of the sentence whilst in the prison system{" "}
-      </h3>
+         duration of the sentence whilst in the prison system{" "}</p>
+     
 
-      <h1> How does it work? </h1>
-      <h3>
+      <h2> How does it work? </h2>
+      
         {" "}
-        Only willing inmates, vetted for safety and serving time for non violent 
+      <p>  Only willing inmates, vetted for safety and serving time for non violent 
         offenses are considered.  This is a not for profit scheme which matches 
         suitable candidates with appropriate industry or business.  The inmate 
         recieves a fair wage for a fair work.  
@@ -59,8 +56,8 @@ const Home = () => {
         profile page: An admin can create a prisoner’s profile. Should include
         name, availability (permissions to work in prison only or able to have
         work leave), and list of skills and/or previous work experience. The
-        profile can be edited and deleted after creation.
-      </h3>
+        profile can be edited and deleted after creation.</p>
+      
 
       <footer>
         <p>Copyright 2020. Prison Skills</p>
@@ -78,28 +75,31 @@ const Home = () => {
 
 const MyDiv = styled.div`
 margin: 0 20px;
-border: 1px solid #0088dd;
-padding: 20px; 
-div {
-  background: lightgrey;
-  padding: 20px;
-}
+border: 1px, solid, #0088dd;
+
 .main-title {
+margin-top: 10px;
   text-align: center;
   background: blueviolet;
-  font-size: 35px;
-};
-
+}
+div {
+  background: lightgrey;
+  border: 1px solid #0088dd;
+  padding: 10px;
+}
 .mission-statement:hover {
-  color: red
+  color: red;
+}
+p {
+  font-weight: normal;
 }
 
 
 
 
 
-`;
 
 
+`
 
 export default Home;

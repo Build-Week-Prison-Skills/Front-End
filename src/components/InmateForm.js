@@ -6,8 +6,8 @@ import { withAuth } from "./WithAuth";
 
 export default function InmateForm(props) {
   const [inmateFormValues, setInmateFormValues] = useState({
-    Name: "",
-    Prison_id: "",
+    name: "",
+    prison_id: "",
     day_release: "",
     skills: ""
   });
@@ -15,8 +15,8 @@ export default function InmateForm(props) {
   console.log(inmateFormValues);
 
   const resetTo = {
-    Name: "",
-    Prison_id: "",
+    name: "",
+    prison_id: "",
     day_release: false,
     skills: ""
   };
@@ -28,6 +28,7 @@ export default function InmateForm(props) {
       .then(response => {
         console.log(response);
         actions.resetForm();
+        props.history.push(`/facilityList/facility`);
       })
       .catch(e => console.log(e))
       .finally(() => {
@@ -55,7 +56,7 @@ export default function InmateForm(props) {
           <div>
             <label htmlFor="PrisonId">I.D. </label>
             <Field
-              type="text"
+              type="number"
               id="PrisonId"
               name="prison_id"
               placeholder="Prison/Facility id"
