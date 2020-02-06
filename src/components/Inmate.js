@@ -11,6 +11,10 @@ const Inmate = ({ inmate }) => {
       <h3>id: {Prison_id}</h3>
       <h3>Day Release?: {day_release}</h3>
       <h3>skills: {skills}</h3>
+      <div>
+      <Button type="primary" >Edit  </Button>
+      <Button type="danger" > Delete </Button>
+      </div>
     </StyledDiv>
   );
 };

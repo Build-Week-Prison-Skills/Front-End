@@ -35,7 +35,7 @@ export default function FacilityList(props) {
         />
       ))}
       <Link to="/addPrison">
-        <Button  className="add-prison">
+        <Button type="primary"  className="add-prison">
           Add a Prison
         </Button>
       </Link>

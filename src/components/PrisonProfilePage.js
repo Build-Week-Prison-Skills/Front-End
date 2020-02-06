@@ -62,7 +62,7 @@ const PrisonProfilePage = (props, { inmates }) => {
         <h3>{Location}</h3>
         <h3>{id}</h3>
         <Link to="/addInmate">
-        <Button className="add-prisoner">Add Prisoner</Button>
+        <Button type="primary" className="add-prisoner">Add Prisoner</Button>
         </Link> 
       </StyledPrison>
       <StyledPrisoner>
