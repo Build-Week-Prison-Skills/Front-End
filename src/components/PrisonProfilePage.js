@@ -9,7 +9,8 @@ import { withAuth } from "./WithAuth";
 const PrisonProfilePage = (props, { inmates }) => {
   const [prison, setPrison] = useState();
   const [prisoners, setPrisoners] = useState([]);
-  // const [isDeleted, setIsDeleted] = useState(false);
+ 
+  
 
   console.log(prisoners);
   useEffect(() => {
@@ -41,7 +42,6 @@ const PrisonProfilePage = (props, { inmates }) => {
   };
 
   const deletePrisoner = (event, id) => {
-    console.log("clicked");
     event.preventDefault();
     withAuth()
       .delete(`https://prisonerbw.herokuapp.com/api/auth/prisoners/${id}`)
@@ -50,6 +50,27 @@ const PrisonProfilePage = (props, { inmates }) => {
       })
       .catch(error => console.log(error.message));
   };
+
+
+  // const editPrisoner = prisoner => {
+  //   setEditing(true)
+  
+  //   setPrisonFormValues({
+  //     name: prisoner.name,
+  //     prison_id: prisoner.prison_id,
+  //     day_release: prisoner.day_release,
+  //     skills: prisoner.skills
+  //   })
+  // }
+  // const editPrisoner = (event, id) => {
+  //   event.preventDefault();
+  //   withAuth()
+  //     .delete(`https://prisonerbw.herokuapp.com/api/auth/prisoners/${id}`)
+  //     .then(response => {
+  //       setPrisoners(prisoners.filter(prisoner => prisoner.id !== id));
+  //     })
+  //     .catch(error => console.log(error.message));
+  // };
 
   if (!prison) {
     return <div>Loading prison information...</div>;
@@ -76,6 +97,7 @@ const PrisonProfilePage = (props, { inmates }) => {
         {filteredPrisoners.map(inmate => (
           <Inmate
             deletePrisoner={deletePrisoner}
+            // editPrisoner={editPrisoner}
             key={inmate.id}
             inmate={inmate}
           />

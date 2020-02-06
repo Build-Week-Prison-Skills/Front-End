@@ -4,22 +4,18 @@ import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { withAuth } from "./WithAuth";
 
+const initialFormState = {
+  name: "",
+  prison_id: "",
+  day_release: "",
+  skills: ""
+}
 export default function InmateForm(props) {
-  const [inmateFormValues, setInmateFormValues] = useState({
-    name: "",
-    prison_id: "",
-    day_release: "",
-    skills: ""
-  });
+  const [inmateFormValues, setInmateFormValues] = useState(initialFormState);
 
   console.log(props);
 
-  const resetTo = {
-    name: "",
-    prison_id: "",
-    day_release: false,
-    skills: ""
-  };
+
 
   function handleSubmitPrisoner(values, actions) {
     withAuth()
@@ -38,7 +34,7 @@ export default function InmateForm(props) {
   return (
     <StyledAddInmate>
       <h1>Add an inmate</h1>
-      <Formik onSubmit={handleSubmitPrisoner} initialValues={resetTo}>
+      <Formik onSubmit={handleSubmitPrisoner} initialValues={initialFormState}>
         <Form>
           {/* username */}
           <div>

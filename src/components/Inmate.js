@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button } from 'antd';
 import { withAuth } from "./WithAuth";
 
-const Inmate = ({ inmate, deletePrisoner }) => {
+const Inmate = ({ inmate, deletePrisoner, editPrisoner }) => {
  
   const { Name, Prison_id, day_release, skills } = inmate;
 
@@ -15,7 +15,7 @@ const Inmate = ({ inmate, deletePrisoner }) => {
       <h3>Day Release?: {day_release}</h3>
       <h3>skills: {skills}</h3>
       <div>
-      <Button type="primary" >Edit  </Button>
+      <Button type="primary" onClick={event => editPrisoner(event, inmate.id)} >Edit  </Button>
       <Button type="danger"   onClick={event => deletePrisoner(event, inmate.id)} > Delete </Button>
       </div>
     </StyledDiv>
