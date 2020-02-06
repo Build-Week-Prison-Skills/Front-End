@@ -99,12 +99,12 @@ export default function PrisonForm(props) {
 }
 
 const StyledAddPrison = styled.div`
-  width: 300px;
+  width: 650px;
   display: flex;
   flex-direction: column;
   align-items: right;
   justify-content: space-between;
-  height: 300px;
+  height: auto;
   margin: 20px auto;
   padding-bottom: 20px;
   border: #003366 2px solid;

@@ -1,17 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { Button } from 'antd';
 
 const Inmate = ({ inmate }) => {
   const { Name, Prison_id, day_release, skills } = inmate;
+
   return (
     <StyledDiv>
-      {/* <img src={props.image} alt={props.name} /> */}
-      {/* <h3>id: {id}</h3> */}
-      <h3>{Name}</h3>
+           <h3>{Name}</h3>
       <h3>id: {Prison_id}</h3>
       <h3>Day Release?: {day_release}</h3>
       <h3>skills: {skills}</h3>
-      {/* <h3>Day Release?: {if (day_release===0){return "Yes"}else{return "False"}}</h3> */}
+      <div>
+      <Button type="primary" >Edit  </Button>
+      <Button type="danger" > Delete </Button>
+      </div>
     </StyledDiv>
   );
 };
