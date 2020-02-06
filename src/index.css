@@ -29,6 +29,7 @@ top: 0;
 display:flex;
 justify-content: center;
 align-items: center;
+display: none;
 }
 .modal-content {
 width: 500px;
@@ -38,6 +39,7 @@ border-radius: 4px;
 text-align: center;
 padding: 20px;
 position: relative;
+
 }
 
 input {
@@ -48,5 +50,8 @@ input {
 .close {
   position: absolute;
   top: 0;
-  right: 
+  right: 14px;
+  font-size: 40px;
+  transform: rotate(45deg);
+  cursor: pointer;
 }
