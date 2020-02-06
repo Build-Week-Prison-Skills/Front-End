@@ -28,6 +28,7 @@ export default function InmateForm(props) {
       .then(response => {
         console.log(response);
         actions.resetForm();
+        props.history.push(`/facilityList/facility`);
       })
       .catch(e => console.log(e))
       .finally(() => {

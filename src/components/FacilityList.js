@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Facility from "./Facility";
+import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 export default function FacilityList(props) {
   const [facilities, setFacilities] = useState([]);
@@ -11,7 +13,7 @@ export default function FacilityList(props) {
       axios
         .get("https://prisonerbw.herokuapp.com/api/prisons")
         .then(response => {
-          console.log(response.data)
+          console.log(response.data);
           setFacilities(response.data);
         })
         .catch(error => {
@@ -23,7 +25,7 @@ export default function FacilityList(props) {
 
   return (
     <StyledFacilityList className="inmate-list">
-      {facilities.map((facility,index) => (
+      {facilities.map((facility, index) => (
         <Facility
           key={facilities[index]}
           id={facility.id}
@@ -32,11 +34,17 @@ export default function FacilityList(props) {
           available_prisoners={facility.available_prisoners}
         />
       ))}
+      <Link to="/addPrison">
+        <Button  className="add-prison">
+          Add a Prison
+        </Button>
+      </Link>
     </StyledFacilityList>
   );
 }
 
 const StyledFacilityList = styled.div`
-display:flex;
-flex-direction:column-reverse;
-`
+  display: flex;
+  flex-direction: column-reverse;
+  
+`;

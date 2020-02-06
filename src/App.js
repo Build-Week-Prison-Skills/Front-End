@@ -28,17 +28,7 @@ const App = () => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route
-              exact
-              path="/inmateList"
-              render={props => (
-                <InmateList
-                  {...props}
-                  inmates={inmates}
-                  setInmates={setInmates}
-                />
-              )}
-            />
+           
             <Route exact path="/facilityList">
               <FacilityList />
             </Route>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Inmate from "./Inmate";
+import { Button } from 'antd';
+import { Link } from "react-router-dom";
 
 const PrisonProfilePage = (props, { inmates }) => {
   console.log(props);
@@ -54,11 +56,14 @@ const PrisonProfilePage = (props, { inmates }) => {
   const { id, Prison_Name, Location, available_prisoners } = prison;
   return (
     <StyledPrisonProfile className="save-wrapper">
-    
+   
       <StyledPrison>
         <h1>{Prison_Name} </h1>
         <h3>{Location}</h3>
         <h3>{id}</h3>
+        <Link to="/addInmate">
+        <Button className="add-prisoner">Add Prisoner</Button>
+        </Link> 
       </StyledPrison>
       <StyledPrisoner>
         {filteredPrisoners.map((inmate, index) => (
@@ -100,3 +105,4 @@ const StyledPrisoner = styled.div`
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   overflow: hidden;
 `;
+
