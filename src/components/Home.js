@@ -14,10 +14,10 @@ const Home = () => {
       
       <h1 className="main-title"> Prisoner Skills</h1>
       
-      <h2>Recruit skilled candidates, whilst helping rehabilition</h2>
+      <h2>Recruit skilled candidates, whilst helping rehabilitation</h2>
       
       <h2 className="mission-statement">Mission Statement</h2>
-      <h3>
+      <h3 className="mission-statement">
         Prisoner skills is a rehabilitation focused venture aimed at mutualy
         benefiting both inmates and potential employers. Low risk individuals
         are helped to maintain their skills, realise their full potential whilst
@@ -90,7 +90,9 @@ div {
   font-size: 35px;
 };
 
-
+.mission-statement:hover {
+  color: red
+}
 
 
 
