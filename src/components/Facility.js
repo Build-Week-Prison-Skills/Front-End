@@ -1,46 +1,36 @@
 import React from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom"
-import { reach } from "yup";
+import { Link } from "react-router-dom";
 
 
 
-   
-
-
-
-
-const Facility = ({ facility }) => {
-  const { id, Prison_Name, Location, available_prisoners } = facility;
-  return (
-    <div>
-      <Link to={`/facilityList/facility/${id}`}>
+const Facility= (props) => {
+    
+    return (
+      <Link to={`/facilityList/facility/${props.id}`}> 
       <StyledFacility>
-    <h2>id:{id} </h2>
-  <h2>prison_name:{Prison_Name}</h2>
-      <h3>location:{Location}</h3>
-        <h3>available_prisoners:{available_prisoners}</h3>
-    </StyledFacility>
+             <h1>{props.Prison_Name}</h1>
+             <h3>id: {props.id}</h3>
+             <h3>Location: {props.Location}</h3>
+             <h3>Available prisoners = {props.available_prisoners}</h3>
+      </StyledFacility>
+      </Link> 
+    );
+  };
+  
+  export default Facility;
 
-      </Link>
-   
-    </div>
-  );
-};
-
-export default Facility;
-
-// styling
+  // styling
 const StyledFacility = styled.div`
-  margin: 20px auto;
-  width: 60%;
-  border: blueviolet 2px solid;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  overflow: hidden;
-  &:hover {
-    background-color: blueviolet;
-    color: white;
-  }
+margin: 20px auto;
+width: 60%;
+border: #003366 2px solid;
+height: auto;
+border-radius: 4px;
+box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+overflow: hidden;
+&:hover {
+  background-color: #0099ff;
+  color:white;
+}
 `;

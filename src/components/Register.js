@@ -149,8 +149,9 @@ const StyledContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-`;
+`
 
+ 
 const StyledForm = styled(Form)`
   max-width: 25rem;
   padding: 2.5rem !important;
