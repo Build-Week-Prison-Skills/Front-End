@@ -8,12 +8,15 @@ import { Link } from "react-router-dom";
 const PrisonProfilePage = (props, { inmates }) => {
   const [prison, setPrison] = useState();
   const [prisoners, setPrisoners] = useState([]);
+  
+
   console.log(prisoners);
   useEffect(() => {
     getPrisonById();
     getAllPrisoners();
   }, []);
   const getPrisonById = () => {
+    console.log( props.match.params.id)
     const id = props.match.params.id;
     axios
       .get(`https://prisonerbw.herokuapp.com/api/auth/prisons/${id}`)

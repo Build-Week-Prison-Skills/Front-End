@@ -18,7 +18,6 @@ export default function PrisonForm(props) {
   };
 
   function handleSubmitPrison(values, actions) {
-    console.log(values);
     withAuth()
       .post("https://prisonerbw.herokuapp.com/api/auth/prisons", values)
       .then(response => {

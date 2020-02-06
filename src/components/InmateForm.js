@@ -25,7 +25,7 @@ export default function InmateForm(props) {
     withAuth()
       .post("https://prisonerbw.herokuapp.com/api/auth/prisoners", values)
       .then(response => {
-        console.log(values);
+       
         props.history.push(`/facilityList/facility/${values.prison_id}`);
         actions.resetForm();
       })

@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Button } from 'antd';
+import { withAuth } from "./WithAuth";
 
 const Inmate = ({ inmate }) => {
+  console.log(inmate)
   const { Name, Prison_id, day_release, skills } = inmate;
+  const [isDeleted, setIsDeleted] = useState(false);
+ 
+  const deletePrisoner = (event, id) => {
+    console.log("clicked")
+    event.preventDefault();
+    withAuth()
+      .delete(`https://prisonerbw.herokuapp.com/api/auth/prisoners/${inmate.id}`)
+      .then(() => setIsDeleted(true))
+      .catch(error => console.log(error.message));
+  };
 
   return (
     <StyledDiv>
@@ -13,7 +25,7 @@ const Inmate = ({ inmate }) => {
       <h3>skills: {skills}</h3>
       <div>
       <Button type="primary" >Edit  </Button>
-      <Button type="danger" > Delete </Button>
+      <Button type="danger"   onClick={event => deletePrisoner(event, Prison_id)} > Delete </Button>
       </div>
     </StyledDiv>
   );
