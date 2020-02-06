@@ -4,11 +4,12 @@ import styled from "styled-components";
 import Inmate from "./Inmate";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { withAuth } from "./WithAuth";
 
 const PrisonProfilePage = (props, { inmates }) => {
   const [prison, setPrison] = useState();
   const [prisoners, setPrisoners] = useState([]);
-  
+  // const [isDeleted, setIsDeleted] = useState(false);
 
   console.log(prisoners);
   useEffect(() => {
@@ -16,7 +17,7 @@ const PrisonProfilePage = (props, { inmates }) => {
     getAllPrisoners();
   }, []);
   const getPrisonById = () => {
-    console.log( props.match.params.id)
+    console.log(props.match.params.id);
     const id = props.match.params.id;
     axios
       .get(`https://prisonerbw.herokuapp.com/api/auth/prisons/${id}`)
@@ -37,6 +38,17 @@ const PrisonProfilePage = (props, { inmates }) => {
       .catch(error => {
         console.error(error);
       });
+  };
+
+  const deletePrisoner = (event, id) => {
+    console.log("clicked");
+    event.preventDefault();
+    withAuth()
+      .delete(`https://prisonerbw.herokuapp.com/api/auth/prisoners/${id}`)
+      .then(response => {
+        setPrisoners(prisoners.filter(prisoner => prisoner.id !== id));
+      })
+      .catch(error => console.log(error.message));
   };
 
   if (!prison) {
@@ -62,7 +74,11 @@ const PrisonProfilePage = (props, { inmates }) => {
       </StyledPrison>
       <StyledPrisoner>
         {filteredPrisoners.map(inmate => (
-          <Inmate key={inmate.id} inmate={inmate} />
+          <Inmate
+            deletePrisoner={deletePrisoner}
+            key={inmate.id}
+            inmate={inmate}
+          />
         ))}
       </StyledPrisoner>
     </StyledPrisonProfile>
