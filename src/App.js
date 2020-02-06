@@ -31,9 +31,12 @@ const App = () => {
             <Route exact path="/facilityList">
               <FacilityList />
             </Route>
-            <Route exact path="/addInmate">
-              <InmateForm />
-            </Route>
+            <Route 
+            exact path="/addInmate" 
+            render={props =>  <InmateForm {...props} />}
+            />
+            
+
             <Route exact path="/addPrison">
               <PrisonForm />
             </Route>

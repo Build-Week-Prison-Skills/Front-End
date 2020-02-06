@@ -12,7 +12,7 @@ export default function InmateForm(props) {
     skills: ""
   });
 
-  console.log(inmateFormValues);
+  console.log(props);
 
   const resetTo = {
     name: "",
@@ -22,13 +22,12 @@ export default function InmateForm(props) {
   };
 
   function handleSubmitPrisoner(values, actions) {
-    console.log(values);
     withAuth()
       .post("https://prisonerbw.herokuapp.com/api/auth/prisoners", values)
       .then(response => {
-        console.log(response);
+        console.log(values);
+        props.history.push(`/facilityList/facility/${values.prison_id}`);
         actions.resetForm();
-        props.history.push(`/facilityList/facility`);
       })
       .catch(e => console.log(e))
       .finally(() => {
