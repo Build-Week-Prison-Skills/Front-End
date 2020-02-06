@@ -7,21 +7,21 @@ import { Link } from "react-router-dom";
 
 export default function FacilityList(props) {
   const [facilities, setFacilities] = useState([]);
-
   useEffect(() => {
-    const getInmates = () => {
-      axios
-        .get("https://prisonerbw.herokuapp.com/api/prisons")
-        .then(response => {
-          console.log(response.data);
-          setFacilities(response.data);
-        })
-        .catch(error => {
-          console.log("the data was not returned", error);
-        });
-    };
     getInmates();
   }, []);
+  
+        const getInmates = () => {
+          axios
+            .get("https://prisonerbw.herokuapp.com/api/prisons")
+            .then(response => {
+              console.log(response.data);
+              setFacilities(response.data);
+            })
+            .catch(error => {
+              console.log("the data was not returned", error);
+            });
+        };
 
   return (
     <StyledFacilityList className="inmate-list">
