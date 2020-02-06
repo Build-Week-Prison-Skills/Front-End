@@ -13,18 +13,19 @@ export default function InmateList({inmates, setInmates}) {
         .then(response => {
             console.log(response.data);
                    setInmates(response.data);
-          console.log(inmates);
+         
         })
         .catch(error => {
           console.log("the data was not returned", error);
         });
     };
     getInmates();
+    console.log(inmates);
   },[]);
   return (
     <div className="inmate-list">
-      {inmates.map((inmate, index) => (
-        <Inmate key={inmate.index} inmate={inmate} />
+      {inmates.map((inmate,index) => (
+        <Inmate key={inmates[index]} inmate={inmate} />
       ))}
     </div>
   );

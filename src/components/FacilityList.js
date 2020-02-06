@@ -22,21 +22,21 @@ export default function FacilityList(props) {
   }, []);
 
   return (
-    <styledFacilityList className="inmate-list">
-      {facilities.map(facility => (
+    <StyledFacilityList className="inmate-list">
+      {facilities.map((facility,index) => (
         <Facility
-          key={facility.id}
+          key={facilities[index]}
           id={facility.id}
           Prison_Name={facility.Prison_Name}
           Location={facility.Location}
           available_prisoners={facility.available_prisoners}
         />
       ))}
-    </styledFacilityList>
+    </StyledFacilityList>
   );
 }
 
-const styledFacilityList = styled.div`
+const StyledFacilityList = styled.div`
 display:flex;
 flex-direction:column-reverse;
 `
