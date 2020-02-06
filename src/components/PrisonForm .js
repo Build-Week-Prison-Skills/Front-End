@@ -23,6 +23,7 @@ export default function PrisonForm(props) {
       .post("https://prisonerbw.herokuapp.com/api/auth/prisons", values)
       .then(response => {
         console.log(response);
+        props.history.push("/facilityList/");
         actions.resetForm();
       })
       .catch(e => console.log(e))
