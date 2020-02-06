@@ -11,6 +11,7 @@ const Home = () => {
    < MyDiv>
     <div>
       <h1 className="main-title"> Prisoner Skills</h1>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYNxGWOLyzDUMSx1DQLopS0tHGfGZslMmPj2MhtFc_Ck-gwXWP"></img>
       <h2>Recruit skilled candidates, whilst helping rehabilitation</h2>
 
       <h2 className="mission-statement">Mission Statement</h2>
@@ -85,21 +86,17 @@ margin-top: 10px;
 div {
   background: lightgrey;
   border: 1px solid #0088dd;
-  padding: 10px;
+  padding: 20px;
+  background-image:  url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYNxGWOLyzDUMSx1DQLopS0tHGfGZslMmPj2MhtFc_Ck-gwXWP") 
 }
 .mission-statement:hover {
   color: red;
 }
 p {
-  font-weight: normal;
+  font-weight: bolder;
+  color: white;
+  font-size: 19px;
 }
-
-
-
-
-
-
-
-`
+`;
 
 export default Home;

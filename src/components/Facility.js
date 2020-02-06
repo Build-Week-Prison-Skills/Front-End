@@ -32,5 +32,7 @@ overflow: hidden;
 &:hover {
   background-color: #0099ff;
   color:white;
+  
+
 }
 `;
