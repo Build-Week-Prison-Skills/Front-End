@@ -2,16 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Inmate from "./Inmate";
-import { Button } from "antd";
+import { Modal, Button } from "antd";
 import { Link } from "react-router-dom";
 import { withAuth } from "./WithAuth";
+import { useLocalStorage } from "./Hooks/useLocalStorage";
+
+
 
 const PrisonProfilePage = (props, { inmates }) => {
-  const [prison, setPrison] = useState();
-  const [prisoners, setPrisoners] = useState([]);
+  const [prison, setPrison] = useLocalStorage();
+  const [prisoners, setPrisoners] = useLocalStorage([]);
+  const [visible, setVisible] = useState(false);
  
+  // const [currentInmateFormValues, setCurrentInmateFormValues] = useState(inmateFormValues);
   
-
   console.log(prisoners);
   useEffect(() => {
     getPrisonById();
@@ -50,28 +54,35 @@ const PrisonProfilePage = (props, { inmates }) => {
       })
       .catch(error => console.log(error.message));
   };
-
-
   // const editPrisoner = prisoner => {
   //   setEditing(true)
   
-  //   setPrisonFormValues({
+  //   currentInmateFormValues({
   //     name: prisoner.name,
   //     prison_id: prisoner.prison_id,
   //     day_release: prisoner.day_release,
   //     skills: prisoner.skills
   //   })
   // }
-  // const editPrisoner = (event, id) => {
-  //   event.preventDefault();
-  //   withAuth()
-  //     .delete(`https://prisonerbw.herokuapp.com/api/auth/prisoners/${id}`)
-  //     .then(response => {
-  //       setPrisoners(prisoners.filter(prisoner => prisoner.id !== id));
-  //     })
-  //     .catch(error => console.log(error.message));
-  // };
+  const showModal = (inmate) => {
+    console.log(inmate);
+    setVisible(true)
+  };
+  const handleEditSubmit = editedValues => {
+    // console.log(editedValues);
+      setVisible(false);
+      withAuth()
+      .put(`https://prisonerbw.herokuapp.com/api/auth/prisoners/${editedValues.id}`,editedValues)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => console.log(error.message));
 
+  };
+
+  const handleModalCancel = e => {
+     setVisible(false);
+  };
   if (!prison) {
     return <div>Loading prison information...</div>;
   }
@@ -97,12 +108,17 @@ const PrisonProfilePage = (props, { inmates }) => {
         {filteredPrisoners.map(inmate => (
           <Inmate
             deletePrisoner={deletePrisoner}
-            // editPrisoner={editPrisoner}
+            showModal={showModal}
             key={inmate.id}
             inmate={inmate}
+            handleModalCancel={handleModalCancel}
+            handleEditSubmit={handleEditSubmit}
+            visible={visible}
+            setVisible={setVisible}
           />
         ))}
       </StyledPrisoner>
+      
     </StyledPrisonProfile>
   );
 };

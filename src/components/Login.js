@@ -53,6 +53,10 @@ function LoginForm(props) {
         setLoginError(message);
       });
   };
+  const logout =()=>{
+    localStorage.clear("token");
+    props.history.push("/");
+  }
   return (
     <StyledContainer>
       <StyledForm onSubmit={e => handleSubmit(e)}>
