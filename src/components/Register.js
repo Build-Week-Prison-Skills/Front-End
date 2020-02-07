@@ -44,6 +44,7 @@ function RegisterForm(props) {
     axios
       .post("https://prisonerbw.herokuapp.com/api/auth/register", values)
       .then(response => {
+        console.log(response)
         setLoadingUser(false);
         props.history.push("/login");
       })

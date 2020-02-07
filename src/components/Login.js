@@ -43,6 +43,7 @@ function LoginForm(props) {
     axios
       .post("https://prisonerbw.herokuapp.com/api/auth/login", values)
       .then(response => {
+        console.log(response, values)
         setLoadingUser(false);
         localStorage.setItem("token", response.data.token);
         props.history.push("/facilityList");
@@ -72,7 +73,7 @@ function LoginForm(props) {
           validateStatus={usernameError ? "error" : ""}
           help={usernameError || ""}
         >
-          {getFieldDecorator("username", {
+          {getFieldDecorator("UserName", {
             rules: [{ required: true, message: "Please input your username" }]
           })(
             <Input
@@ -85,7 +86,7 @@ function LoginForm(props) {
           validateStatus={passwordError ? "error" : ""}
           help={passwordError || ""}
         >
-          {getFieldDecorator("password", {
+          {getFieldDecorator("Password", {
             rules: [
               {
                 required: true,

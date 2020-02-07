@@ -9,10 +9,10 @@ const Home = () => {
 
       <h1> Prisoner Skills</h1>
     </div>
-      <h2>Recruit skilled candidates, whilst helping their rehabilition</h2>
+      <h2>Recruit skilled candidates, whilst helping their rehabilition and the community</h2>
 
-      <h2>Mission Statement</h2>
-      <h3>
+      <h3>Mission Statement</h3>
+      <h4>
         Prisoner skills is a rehabilitation focused venture, aimed at mutualy
         benefiting both inmates and potential employers. Low risk individuals
         are helped to maintain their skills, realise their full potential whilst
@@ -21,10 +21,10 @@ const Home = () => {
         them find work beyond their sentence. it also benefits the community and
         potential employers, as vital skills are not lost for the duration of
         the sentence whilst in the prison system{" "}
-      </h3>
+      </h4>
 
-      <h1> How does it work? </h1>
-      <h3>
+      <h3> How does it work? </h3>
+      <h4>
         {" "}
         Only willing inmates, vetted for safety and serving time for non violent
         offenses are considered. This is a not for profit scheme which matches
@@ -55,7 +55,7 @@ const Home = () => {
         prison only or able to have work leave), and list of skills and/or
         previous work experience. The profile can be edited and deleted after
         creation.
-      </h3>
+      </h4>
 
       <footer>
         <p>Copyright 2020. Prison Skills</p>
@@ -76,16 +76,16 @@ h1 {
   margin-top: 18px;
   text-align: center;
 }
-div {
-  
+h2{text-align: center;}
+div { 
   background: lightgrey;
   border: 1px solid #0088DD;
   padding: 20px;
   height: 200px;
   background-image:  url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYNxGWOLyzDUMSx1DQLopS0tHGfGZslMmPj2MhtFc_Ck-gwXWP") 
 }
-h2:hover {
-  color: red;
+h3:hover {
+  color: #66b5ff;
 }
 p {
   font-weight: bolder;
