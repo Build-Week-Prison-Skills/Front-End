@@ -1,0 +1,103 @@
+/* // styling
+// const StyledPrisonProfile = styled.div`
+//   display: flex;
+//   margin: 20px auto;
+//   width: 100%;
+//   border: #003366 2px solid;
+//   height: auto;
+//   border-radius: 4px;
+//   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+//   overflow: hidden;
+// `;
+// const StyledPrison = styled.div`
+//   margin: 20px auto;
+//   width: 48%;
+//   height: 1000px;
+//   border: #003366 2px solid;
+//   height: auto;
+//   border-radius: 4px;
+//   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+//   overflow: hidden;
+// `;
+// const StyledPrisoner = styled.div`
+//   margin: 20px auto;
+//   width: 48%;
+//   border: #003366 2px solid;
+//   height: auto;
+//   border-radius: 4px;
+//   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+//   overflow: hidden;
+// `; */
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 96%;
+ 
+    height: auto;
+    border-radius: 4px;
+
+    overflow: hidden;
+
+}
+
+.prison-wrapper {
+    margin: 20px auto;
+    width: 80%;
+    height: 1000px;
+    border: #003366 2px solid;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+}
+
+.prisoners-wrapper {
+    margin: 20px auto;
+    width: 90%;
+    height: 1000px;
+    
+    height: auto;
+    border-radius: 4px;
+    
+    overflow: hidden;
+}
+
+@media(min-width: 768px) {
+    .page-wrapper {
+        border: #003366 2px solid;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+        display: flex;
+        flex-direction: row;
+    }
+
+    .prison-wrapper {
+        width: 25%;
+        margin:10px;
+        
+    }
+
+    .prisoners-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 75%;
+       
+    }
+}
+/* h1{
+    font-size:8vw;
+  }
+  h2{
+    font-size:6vw;
+  }
+  h3{
+    font-size:4vw;
+  }
+  h4{
+    font-size:3vw;
+  }
+  p{
+    font-size:2vw;
+  } */

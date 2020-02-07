@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <MyDiv>
     
-    <div>
+    <div className="text-container">
 
       <h1> Prisoner Skills</h1>
     </div>
@@ -69,26 +69,74 @@ export default Home;
 
 const MyDiv = styled.div`
 margin: 0 auto;
+
 border: 1px, solid, #0088DD;
 
 h1 {
   color:#001a33;
   margin-top: 18px;
   text-align: center;
+  font-size:3rem;
 }
-h2{text-align: center;}
+h2{text-align: center;
+  font-size:1.5rem;
+}
 div { 
   background: lightgrey;
   border: 1px solid #0088DD;
   padding: 20px;
   height: 200px;
+  font-size:5vw;
   background-image:  url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYNxGWOLyzDUMSx1DQLopS0tHGfGZslMmPj2MhtFc_Ck-gwXWP") 
 }
-h3:hover {
-  color: #66b5ff;
+h3{
+  text-align: center;
+  font-size:4vh;
 }
-p {
+
+h4 {
   font-weight: bolder;
-  font-size: 19px;
+  font-size:4vw;
 }
+.text-container{
+  margin:0 auto;
+  border:5%;
+}
+
+@media(min-width: 768px) {
+
+  h1 {
+  color:#001a33;
+  margin-top: 18px;
+  text-align: center;
+  font-size:4rem;
+}
+h2{text-align: center;
+  font-size:3rem;
+}
+h3{
+  text-align: center;
+  font-size:2rem;
+}
+
+h4 {
+  font-weight: bolder;
+  font-size:1vw;
+}
+
 `;
+// h1{
+//   font-size:8vw;
+// }
+// h2{
+//   font-size:6vw;
+// }
+// h3{
+//   font-size:4vw;
+// }
+// h4{
+//   font-size:3vw;
+// }
+// p{
+//   font-size:2vw;
+// }
