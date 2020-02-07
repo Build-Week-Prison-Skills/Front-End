@@ -1,9 +1,14 @@
 import React from "react";
+import styled from "styled-components";
 
 const Home = () => {
   return (
+    <MyDiv>
+    
     <div>
+
       <h1> Prisoner Skills</h1>
+    </div>
       <h2>Recruit skilled candidates, whilst helping their rehabilition</h2>
 
       <h2>Mission Statement</h2>
@@ -55,8 +60,35 @@ const Home = () => {
       <footer>
         <p>Copyright 2020. Prison Skills</p>
       </footer>
-    </div>
+ 
+    </MyDiv>
   );
 };
 
 export default Home;
+
+const MyDiv = styled.div`
+margin: 0 auto;
+border: 1px, solid, #0088DD;
+
+h1 {
+  color:#001a33;
+  margin-top: 18px;
+  text-align: center;
+}
+div {
+  
+  background: lightgrey;
+  border: 1px solid #0088DD;
+  padding: 20px;
+  height: 200px;
+  background-image:  url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYNxGWOLyzDUMSx1DQLopS0tHGfGZslMmPj2MhtFc_Ck-gwXWP") 
+}
+h2:hover {
+  color: red;
+}
+p {
+  font-weight: bolder;
+  font-size: 19px;
+}
+`;
