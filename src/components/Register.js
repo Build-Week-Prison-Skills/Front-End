@@ -130,7 +130,6 @@ function RegisterForm(props) {
             className="login-form-button"
             onClick={props.startLoading}
             size="large"
-            type="primary"
             loading={loadingUser}
           >
             {loadingUser ? "Registering" : "Register"}
