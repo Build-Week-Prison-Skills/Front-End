@@ -25,6 +25,7 @@ export default function FacilityList(props) {
 
   return (
     <StyledFacilityList className="inmate-list">
+      
       {facilities.map((facility, index) => (
         <Facility
           key={facilities[index]}
@@ -38,6 +39,7 @@ export default function FacilityList(props) {
         <Button type="primary"  className="add-prison">
           Add a Prison
         </Button>
+        <div></div>
       </Link>
     </StyledFacilityList>
   );
@@ -46,5 +48,14 @@ export default function FacilityList(props) {
 const StyledFacilityList = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  
+
 `;
+const StyledTopDiv=styled.div`
+  div { 
+  background: lightgrey;
+  border: 1px solid #0088DD;
+  padding: 20px;
+  height: 200px;
+  background-image:  url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYNxGWOLyzDUMSx1DQLopS0tHGfGZslMmPj2MhtFc_Ck-gwXWP") 
+}
+`
