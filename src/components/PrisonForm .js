@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { withAuth } from "./WithAuth";
@@ -9,8 +9,7 @@ const initialFormValues = {
   available_prisoners: 0
 };
 export default function PrisonForm(props) {
-  const [prisonFormValues, setPrisonFormValues] = useState(initialFormValues
-  );
+
 
 
 

@@ -53,10 +53,10 @@ function LoginForm(props) {
         setLoginError(message);
       });
   };
-  const logout =()=>{
-    localStorage.clear("token");
-    props.history.push("/");
-  }
+  // const logout = () => {
+  //   localStorage.clear("token");
+  //   props.history.push("/");
+  // };
   return (
     <StyledContainer>
       <StyledForm onSubmit={e => handleSubmit(e)}>
@@ -114,7 +114,6 @@ function LoginForm(props) {
             className="login-form-button"
             onClick={props.startLoading}
             size="large"
-            type="primary"
             loading={loadingUser}
           >
             {loadingUser ? "Logging in" : "Log in"}

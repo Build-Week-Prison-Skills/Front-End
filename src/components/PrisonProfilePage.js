@@ -5,7 +5,7 @@ import Inmate from "./Inmate";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 import { withAuth } from "./WithAuth";
-// import { useLocalStorage } from "./Hooks/useLocalStorage";
+
 
 const PrisonProfilePage = (props, { inmates }) => {
   const [prison, setPrison] = useState();
@@ -77,7 +77,7 @@ const PrisonProfilePage = (props, { inmates }) => {
     prisoner => prisoner.Prison_id === prison.id
   );
 
-  const { id, Prison_Name, Location, available_prisoners } = prison;
+  const { id, Prison_Name, Location } = prison;
   return (
     <StyledPrisonProfile className="save-wrapper">
       <StyledPrison>

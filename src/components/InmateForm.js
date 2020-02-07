@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { withAuth } from "./WithAuth";
 
@@ -11,7 +10,7 @@ const initialFormState = {
   skills: ""
 }
 export default function InmateForm(props) {
-  const [editing, setEditing] = useState(false)
+
   const [inmateFormValues, setInmateFormValues] = useState(initialFormState);
 
   console.log(props);
@@ -32,16 +31,7 @@ export default function InmateForm(props) {
       });
   }
 
-  // const editPrisoner = prisoner => {
-  //   setEditing(true)
-  
-  //   inmateFormValues({
-  //     name: prisoner.name,
-  //     prison_id: prisoner.prison_id,
-  //     day_release: prisoner.day_release,
-  //     skills: prisoner.skills
-  //   })
-  // }
+
   return (
     <StyledAddInmate>
       <h1>Add an inmate</h1>
