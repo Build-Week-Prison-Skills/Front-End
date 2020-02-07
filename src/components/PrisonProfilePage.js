@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import "./PrisonProfilePage.css";
 import axios from "axios";
-import styled from "styled-components";
+// import styled from "styled-components";
 import Inmate from "./Inmate";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
@@ -78,9 +79,10 @@ const PrisonProfilePage = (props, { inmates }) => {
   );
 
   const { id, Prison_Name, Location } = prison;
-  return (
-    <StyledPrisonProfile className="save-wrapper">
-      <StyledPrison>
+  return (<div className="specificity">
+
+    <div className="page-wrapper">
+      <section className="prison-wrapper">
         <h1>{Prison_Name} </h1>
         <h3>{Location}</h3>
         <h3>{id}</h3>
@@ -89,8 +91,8 @@ const PrisonProfilePage = (props, { inmates }) => {
             Add Prisoner
           </Button>
         </Link>
-      </StyledPrison>
-      <StyledPrisoner>
+      </section>
+      <section className="prisoners-wrapper">
         {filteredPrisoners.map(inmate => (
           <Inmate
             deletePrisoner={deletePrisoner}
@@ -102,39 +104,40 @@ const PrisonProfilePage = (props, { inmates }) => {
             setVisible={setVisible}
           />
         ))}
-      </StyledPrisoner>
-    </StyledPrisonProfile>
+      </section>
+    </div>
+  </div>
   );
 };
 export default PrisonProfilePage;
 
 // styling
-const StyledPrisonProfile = styled.div`
-  display: flex;
-  margin: 20px auto;
-  width: 100%;
-  border: #003366 2px solid;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  overflow: hidden;
-`;
-const StyledPrison = styled.div`
-  margin: 20px auto;
-  width: 48%;
-  height: 1000px;
-  border: #003366 2px solid;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  overflow: hidden;
-`;
-const StyledPrisoner = styled.div`
-  margin: 20px auto;
-  width: 48%;
-  border: #003366 2px solid;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  overflow: hidden;
-`;
+// const StyledPrisonProfile = styled.div`
+//   display: flex;
+//   margin: 20px auto;
+//   width: 100%;
+//   border: #003366 2px solid;
+//   height: auto;
+//   border-radius: 4px;
+//   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+//   overflow: hidden;
+// `;
+// const StyledPrison = styled.div`
+//   margin: 20px auto;
+//   width: 48%;
+//   height: 1000px;
+//   border: #003366 2px solid;
+//   height: auto;
+//   border-radius: 4px;
+//   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+//   overflow: hidden;
+// `;
+// const StyledPrisoner = styled.div`
+//   margin: 20px auto;
+//   width: 48%;
+//   border: #003366 2px solid;
+//   height: auto;
+//   border-radius: 4px;
+//   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+//   overflow: hidden;
+// `;

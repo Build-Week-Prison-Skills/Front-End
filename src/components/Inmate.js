@@ -24,34 +24,40 @@ const Inmate = ({
   };
   return (
     <StyledDiv>
-      <div>
-        <img src={headpic} alt="headpic" />
+      <div className="prisoner-info">
+        <div className="prisoner-container1">
+          <img src={headpic} alt="headpic" />
+        </div>
+        <div>
+          <h3>{Name}</h3>
+          <h3>id: {Prison_id}</h3>
+          <h3>Day Release?: {day_release}</h3>
+          <h3>skills: {skills}</h3>
+        </div>
       </div>
-      <h3>{Name}</h3>
-      <h3>id: {Prison_id}</h3>
-      <h3>Day Release?: {day_release}</h3>
-      <h3>skills: {skills}</h3>
       <div>
-        <Button type="primary" onClick={event => showModal(inmate)}>
-          Edit{" "}
-        </Button>
-        <Button
-          type="danger"
-          onClick={event => deletePrisoner(event, inmate.id)}
-        >
-          {" "}
-          Delete{" "}
-        </Button>
+        <div className="button-div">
+          <Button type="primary" onClick={event => showModal(inmate)}>
+            Edit{" "}
+          </Button>
+          <Button
+            type="danger"
+            onClick={event => deletePrisoner(event, inmate.id)}
+          >
+            {" "}
+            Delete{" "}
+          </Button>
+        </div>
       </div>
       <Modal
         title="Basic Modal"
         visible={visible}
         onOk={() => handleEditSubmit(editInmate)}
         onCancel={handleModalCancel}
-        destroyOnClose={true} 
+        destroyOnClose={true}
       >
         `;
-<form>
+        <form>
           <label>
             Name:
             <input
@@ -61,7 +67,7 @@ const Inmate = ({
             />
           </label>
         </form>
-         {/* <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={this.handleSubmit}>
+        {/* <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={this.handleSubmit}>
         <Form.Item label="Note">
           {getFieldDecorator('note', {
             rules: [{ required: true, message: 'Please input your note!' }],
@@ -83,8 +89,9 @@ export default Inmate;
 
 // styling
 const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 20px auto;
-  width: 60%;
   border: #003366 2px solid;
   height: auto;
   border-radius: 4px;
@@ -94,4 +101,30 @@ const StyledDiv = styled.div`
     background-color: #0099ff;
     color: white;
   }
-`
+  h1{
+    font-size:1rem;
+  }
+  h2{
+    font-size:1vw;
+  }
+  .prisoner-info{
+    display: flex;
+  flex-direction: row;
+  font-size:3;
+  }
+  @media (min-width: 768px) {
+    .prisoner-container1 {
+      width: 90%;
+      margin:10px auto;
+      /* align-items:center; */
+      
+    }
+    .prisoner-info{
+      max-width: 250px;
+    display: flex;
+  flex-direction: column;
+
+  max-width:
+  }
+  }
+`;
