@@ -4,15 +4,19 @@ import styled from "styled-components";
 import Inmate from "./Inmate";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { withAuth } from "./WithAuth";
+// import { useLocalStorage } from "./Hooks/useLocalStorage";
 
 const PrisonProfilePage = (props, { inmates }) => {
   const [prison, setPrison] = useState();
   const [prisoners, setPrisoners] = useState([]);
-  console.log(prisoners);
+  const [visible, setVisible] = useState(false);
+
   useEffect(() => {
     getPrisonById();
     getAllPrisoners();
   }, []);
+
   const getPrisonById = () => {
     const id = props.match.params.id;
     axios
@@ -34,6 +38,35 @@ const PrisonProfilePage = (props, { inmates }) => {
       .catch(error => {
         console.error(error);
       });
+  };
+
+  const deletePrisoner = (event, id) => {
+    event.preventDefault();
+    withAuth()
+      .delete(`https://prisonerbw.herokuapp.com/api/auth/prisoners/${id}`)
+      .then(response => {
+        setPrisoners(prisoners.filter(prisoner => prisoner.id !== id));
+      })
+      .catch(error => console.log(error.message));
+  };
+
+  const showModal = inmate => {
+    console.log(inmate);
+    setVisible(true);
+  };
+  const handleEditSubmit = editedValues => {
+    console.log(editedValues);
+    console.log(editedValues.id);
+    setVisible(false);
+    withAuth()
+      .put(
+        `https://prisonerbw.herokuapp.com/api/auth/prisoners/${editedValues.id}`,
+        editedValues
+      )
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => console.log(error.message));
   };
 
   if (!prison) {
@@ -59,7 +92,15 @@ const PrisonProfilePage = (props, { inmates }) => {
       </StyledPrison>
       <StyledPrisoner>
         {filteredPrisoners.map(inmate => (
-          <Inmate key={inmate.id} inmate={inmate} />
+          <Inmate
+            deletePrisoner={deletePrisoner}
+            showModal={showModal}
+            key={inmate.id}
+            inmate={inmate}
+            handleEditSubmit={handleEditSubmit}
+            visible={visible}
+            setVisible={setVisible}
+          />
         ))}
       </StyledPrisoner>
     </StyledPrisonProfile>

@@ -4,31 +4,27 @@ import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { withAuth } from "./WithAuth";
 
+const initialFormState = {
+  name: "",
+  prison_id: "",
+  day_release: "",
+  skills: ""
+}
 export default function InmateForm(props) {
-  const [inmateFormValues, setInmateFormValues] = useState({
-    name: "",
-    prison_id: "",
-    day_release: "",
-    skills: ""
-  });
+  const [editing, setEditing] = useState(false)
+  const [inmateFormValues, setInmateFormValues] = useState(initialFormState);
 
-  console.log(inmateFormValues);
+  console.log(props);
 
-  const resetTo = {
-    name: "",
-    prison_id: "",
-    day_release: false,
-    skills: ""
-  };
+
 
   function handleSubmitPrisoner(values, actions) {
-    console.log(values);
     withAuth()
       .post("https://prisonerbw.herokuapp.com/api/auth/prisoners", values)
       .then(response => {
-        console.log(response);
+       
+        props.history.push(`/facilityList/facility/${values.prison_id}`);
         actions.resetForm();
-        props.history.push(`/facilityList/facility`);
       })
       .catch(e => console.log(e))
       .finally(() => {
@@ -36,10 +32,20 @@ export default function InmateForm(props) {
       });
   }
 
+  // const editPrisoner = prisoner => {
+  //   setEditing(true)
+  
+  //   inmateFormValues({
+  //     name: prisoner.name,
+  //     prison_id: prisoner.prison_id,
+  //     day_release: prisoner.day_release,
+  //     skills: prisoner.skills
+  //   })
+  // }
   return (
     <StyledAddInmate>
       <h1>Add an inmate</h1>
-      <Formik onSubmit={handleSubmitPrisoner} initialValues={resetTo}>
+      <Formik onSubmit={handleSubmitPrisoner} initialValues={initialFormState}>
         <Form>
           {/* username */}
           <div>

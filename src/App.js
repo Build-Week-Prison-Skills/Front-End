@@ -15,7 +15,6 @@ import { Layout } from "antd";
 const { Header, Content } = Layout;
 
 const App = () => {
- 
   return (
     <div>
       <Layout>
@@ -31,12 +30,17 @@ const App = () => {
             <Route exact path="/facilityList">
               <FacilityList />
             </Route>
-            <Route exact path="/addInmate">
-              <InmateForm />
-            </Route>
-            <Route exact path="/addPrison">
-              <PrisonForm />
-            </Route>
+            <Route
+              exact
+              path="/addInmate"
+              render={props => <InmateForm {...props} />}
+            />
+
+            <Route
+              exact
+              path="/addPrison"
+              render={props => <PrisonForm {...props} />}
+            />
 
             <Route
               exact

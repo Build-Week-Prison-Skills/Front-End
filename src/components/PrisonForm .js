@@ -3,26 +3,24 @@ import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { withAuth } from "./WithAuth";
 
+const initialFormValues = {
+  Prison_Name: "",
+  Location: "",
+  available_prisoners: 0
+};
 export default function PrisonForm(props) {
-  const [prisonFormValues, setPrisonFormValues] = useState({
-    Prison_Name: "",
-    Location: "",
-    available_prisoners: 0
-  });
-  console.log(prisonFormValues);
+  const [prisonFormValues, setPrisonFormValues] = useState(initialFormValues
+  );
 
-  const resetPrisonTo = {
-    Prison_Name: "",
-    Location: "",
-    available_prisoners: 0
-  };
+
 
   function handleSubmitPrison(values, actions) {
-    console.log(values);
+  
     withAuth()
       .post("https://prisonerbw.herokuapp.com/api/auth/prisons", values)
       .then(response => {
         console.log(response);
+        props.history.push("/facilityList/");
         actions.resetForm();
       })
       .catch(e => console.log(e))
@@ -34,7 +32,7 @@ export default function PrisonForm(props) {
   return (
     <StyledAddPrison>
       <h1>Add a Prison or correctional facility</h1>
-      <Formik onSubmit={handleSubmitPrison} initialValues={resetPrisonTo}>
+      <Formik onSubmit={handleSubmitPrison} initialValues={initialFormValues}>
         <Form>
           {/*Prison_Name*/}
           <div>
