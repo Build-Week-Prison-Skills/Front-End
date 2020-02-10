@@ -97,7 +97,7 @@ export default function InmateForm(props) {
 }
 
 const StyledAddInmate = styled.div`
-  width: 300px;
+   max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;

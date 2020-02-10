@@ -96,7 +96,7 @@ export default function PrisonForm(props) {
 }
 
 const StyledAddPrison = styled.div`
-  width: 650px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: right;
@@ -120,4 +120,10 @@ const StyledAddPrison = styled.div`
     align-items: left;
     justify-content: space-between;
   }
+}
+    @media(min-width: 768px) {
+      Formik{
+  
+        width:770px;
+      }
 `;
